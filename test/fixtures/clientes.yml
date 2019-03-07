@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nome: MyText
+  cpf_cnpj: MyText
+  data_nascimento: 2019-03-06
+  email: MyText
+
+two:
+  nome: MyText
+  cpf_cnpj: MyText
+  data_nascimento: 2019-03-06
+  email: MyText
