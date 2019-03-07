@@ -23,11 +23,15 @@
 
   <body>
     <div id="wrapper">
-      <%= render partial: "layouts/navbar" %>
-      <div id="page-wrapper">
-        
+      <% if user_signed_in? %>
+        <%= render partial: "layouts/navbar" %>
+        <div id="page-wrapper">
+          <%= yield %>
+        </div>
+      <% else %>
         <%= yield %>
-      </div>
+      <% end %>
+
     </div>
     <!-- /#wrapper -->
   </body>

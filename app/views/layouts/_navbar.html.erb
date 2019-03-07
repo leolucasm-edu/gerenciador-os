@@ -22,8 +22,7 @@
                <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
                </li>
                <li class="divider"></li>
-               <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
-               </li>
+               <li><%= link_to ' Sair', destroy_user_session_path, method: :delete, :class=> 'fa fa-sign-out fa-fw' %></li>
            </ul>
            <!-- /.dropdown-user -->
        </li>
@@ -45,12 +44,10 @@
                    </div>
                    <!-- /input-group -->
                </li>
-               <li>
-                   <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
-               </li>
+               <li><%= link_to ' Dashboard', dashboard_index_path, :class=> 'fa fa-dashboard' %></li>
                <li><%= link_to ' Clientes', clientes_path, :class=> 'fa fa-users' %></li>
                <li><%= link_to ' Produtos', produtos_path, :class=> 'fa fa-archive' %></li>
-               <li><%= link_to ' Serviços', servicos_path, :class=> 'fa fa-wrench' %></li>               
+               <li><%= link_to ' Serviços', servicos_path, :class=> 'fa fa-wrench' %></li>
                <li>
                    <a class="fa fa-edit" href="blank.html"> Orçamentos</a>
                </li>
