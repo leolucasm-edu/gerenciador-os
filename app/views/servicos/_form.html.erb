@@ -1,27 +1,45 @@
-<%= form_with(model: servico, local: true) do |form| %>
-  <% if servico.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(servico.errors.count, "error") %> prohibited this servico from being saved:</h2>
+<div class="row">
+  <div class="col-lg-12">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+      <%= @operacao %>
+      </div>
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-lg-6">
+            <%= form_with(model: servico, local: true) do |form| %>
+              <% if servico.errors.any? %>
+                <div id="error_explanation">
+                  <h2><%= pluralize(servico.errors.count, "error") %> prohibited this servico from being saved:</h2>
+                  <ul>
+                  <% servico.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                  <% end %>
+                  </ul>
+                </div>
+              <% end %>
 
-      <ul>
-      <% servico.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+              <div class="form-group">
+                <%= form.label :descricao %>
+                <%= form.text_area :descricao, id: :servico_descricao, :class=>"form-control" %>
+              </div>
+
+              <div class="form-group">
+                <%= form.label :preco_hora %>
+                <%= form.text_field :preco_hora, id: :servico_preco_hora, :class=>"form-control valor_monetario" %>
+              </div>
+
+              <div class="actions">
+                <button type="submit" class="btn btn-sm btn-primary">Gravar</button>
+                <%= link_to 'Voltar', servicos_path, :class=>"btn btn-sm btn-default" %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+        <!-- /.row (nested) -->
+      </div>
+      <!-- /.panel-body -->
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :descricao %>
-    <%= form.text_area :descricao, id: :servico_descricao %>
+    <!-- /.panel -->
   </div>
-
-  <div class="field">
-    <%= form.label :preco_hora %>
-    <%= form.text_field :preco_hora, id: :servico_preco_hora %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>

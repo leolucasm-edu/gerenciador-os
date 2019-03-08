@@ -1,5 +1,6 @@
 class ServicosController < ApplicationController
   before_action :set_servico, only: [:show, :edit, :update, :destroy]
+  before_action :formata_valor, only: [:update, :create]
 
   # GET /servicos
   # GET /servicos.json
@@ -10,15 +11,18 @@ class ServicosController < ApplicationController
   # GET /servicos/1
   # GET /servicos/1.json
   def show
+    @operacao = "Visualização"
   end
 
   # GET /servicos/new
   def new
+    @operacao = "Inclusão"
     @servico = Servico.new
   end
 
   # GET /servicos/1/edit
   def edit
+    @operacao = "Edição"
   end
 
   # POST /servicos
@@ -65,6 +69,11 @@ class ServicosController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_servico
       @servico = Servico.find(params[:id])
+    end
+
+    def formata_valor
+      servico_params[:preco_hora].gsub! ".", ""
+      servico_params[:preco_hora].gsub! ",", "."
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

@@ -24,7 +24,7 @@
             <% @servicos.each do |servico| %>
               <tr>
                 <td><%= servico.descricao %></td>
-                <td><%= servico.preco_hora %></td>                
+                <td><%= get_valor_formatado servico.preco_hora %></td>
                 <td style="width: 3%; text-align: center;">
                   <%= link_to servico, class:"btn btn-primary btn-circle" do %>
                     <i class="fa fa-eye"></i>
@@ -47,6 +47,6 @@
       </div>
       <br>
 
-      <%= link_to 'New Servico', new_servico_path %>
+      <%= link_to 'Incluir', new_servico_path %>
   </div>
 </div>

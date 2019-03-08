@@ -13,6 +13,9 @@
 //= require rails-ujs
 //= require jquery
 //= require jquery_ujs
+//= require jquery-mask
 //= require bootstrap_sb_admin_base_v2
 //= require turbolinks
 //= require_tree .
+
+$('.valor_monetario').mask('#.##0,00', {reverse: true});

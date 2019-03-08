@@ -24,8 +24,8 @@
               <% @produtos.each do |produto| %>
                 <tr>
                   <td><%= produto.descricao %></td>
-                  <td><%= produto.preco_compra %></td>
-                  <td><%= produto.preco_venda %></td>
+                  <td><%= get_valor_formatado produto.preco_compra %></td>
+                  <td><%= get_valor_formatado produto.preco_venda %></td>
                   <td style="width: 3%; text-align: center;">
                     <%= link_to produto, class:"btn btn-primary btn-circle" do %>
                       <i class="fa fa-eye"></i>
@@ -47,6 +47,6 @@
           </table>
         </div>
         <br>
-        <%= link_to 'New Produto', new_produto_path %>
+        <%= link_to 'Incluir', new_produto_path %>
     </div>
 </div>

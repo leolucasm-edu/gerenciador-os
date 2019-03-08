@@ -22,6 +22,8 @@ gem 'devise'
 gem 'devise-i18n'
 # A gem to automate using jQuery with Rails
 gem 'jquery-rails'
+# jQuery Mask
+gem 'rails-assets-jquery-mask', source: 'https://rails-assets.org'
 # Rails gem of the Bootstrap based admin theme SB Admin 2.
 gem 'bootstrap_sb_admin_base_v2'
 # See https://github.com/rails/execjs#readme for more supported runtimes
