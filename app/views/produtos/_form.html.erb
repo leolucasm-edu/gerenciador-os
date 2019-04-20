@@ -1,32 +1,50 @@
-<%= form_with(model: produto, local: true) do |form| %>
-  <% if produto.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(produto.errors.count, "error") %> prohibited this produto from being saved:</h2>
+<div class="row">
+  <div class="col-lg-6">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+      <%= @operacao %>
+      </div>
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-lg-12">
+            <%= form_with(model: produto, local: true) do |form| %>
+              <% if produto.errors.any? %>
+                <div id="error_explanation">
+                  <h2><%= pluralize(produto.errors.count, "error") %> prohibited this produto from being saved:</h2>
+                  <ul>
+                  <% produto.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                  <% end %>
+                  </ul>
+                </div>
+              <% end %>
 
-      <ul>
-      <% produto.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+              <div class="form-group">
+                <%= form.label 'Descrição' %>
+                <%= form.text_area :descricao, id: :produto_descricao, :class=>"form-control" %>
+              </div>
+
+              <div class="form-group">
+                <%= form.label 'Preço de Compra' %>
+                <%= form.text_field :preco_compra, id: :produto_preco_compra,:class=>"form-control valor_monetario" %>
+              </div>
+
+              <div class="form-group">
+                <%= form.label 'Preço de Venda' %>
+                <%= form.text_field :preco_venda, id: :produto_preco_venda, :class=>"form-control valor_monetario" %>
+              </div>
+
+              <div class="actions">
+                <button type="submit" class="btn btn-sm btn-primary"><%= t('buttons.gravar') %></button>
+                <%= link_to t('buttons.voltar'), produtos_path, :class=>"btn btn-sm btn-default" %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+        <!-- /.row (nested) -->
+      </div>
+      <!-- /.panel-body -->
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :descricao %>
-    <%= form.text_area :descricao, id: :produto_descricao %>
+    <!-- /.panel -->
   </div>
-
-  <div class="field">
-    <%= form.label :preco_compra %>
-    <%= form.text_field :preco_compra, id: :produto_preco_compra %>
-  </div>
-
-  <div class="field">
-    <%= form.label :preco_venda %>
-    <%= form.text_field :preco_venda, id: :produto_preco_venda %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>

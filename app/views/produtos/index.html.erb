@@ -14,9 +14,9 @@
         <table class="table table-striped table-hover">
             <thead>
               <tr>
-                <th>Descricao</th>
-                <th>Preco compra</th>
-                <th>Preco venda</th>
+                <th>Descrição</th>
+                <th>Preco de Compra</th>
+                <th>Preco de Venda</th>
                 <th colspan="3"></th>
               </tr>
             </thead>
@@ -37,7 +37,7 @@
                     <% end %>
                   </td>
                   <td style="width: 3%; text-align: center;">
-                    <%= link_to produto, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger btn-circle" do %>
+                    <%= link_to produto, method: :delete, data: { confirm: t('messages.confirma_remocao') }, class:"btn btn-danger btn-circle" do %>
                       <i class="fa fa-times"></i>
                     <% end %>
                   </td>
@@ -47,6 +47,6 @@
           </table>
         </div>
         <br>
-        <%= link_to 'Incluir', new_produto_path %>
+        <%= link_to t('buttons.incluir'), new_produto_path %>
     </div>
 </div>

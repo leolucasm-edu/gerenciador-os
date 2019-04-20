@@ -1,0 +1,13 @@
+pt-BR:
+  servico:
+    descricao: Descrição
+    preco_hora: Preço/Hora
+  produto:
+    descricao: Descrição
+    preco_compra: Preço de Compra
+    preco_venda: Preço de Venda
+  cliente:
+    nome: Nome
+    cpf_cnpj: CPF/CNPJ
+    data_nascimento: Data de Nascimento
+    email: E-mail

@@ -24,7 +24,7 @@
               <% @clientes.each do |cliente| %>
                 <tr>
                   <td><%= cliente.nome %></td>
-                  <td><%= cliente.cpf_cnpj %></td>                  
+                  <td><%= cliente.cpf_cnpj %></td>
                   <td><%= cliente.email %></td>
                   <td style="width: 3%; text-align: center;">
                     <%= link_to cliente, class:"btn btn-primary btn-circle" do %>
@@ -37,7 +37,7 @@
                     <% end %>
                   </td>
                   <td style="width: 3%; text-align: center;">
-                    <%= link_to cliente, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger btn-circle" do %>
+                    <%= link_to cliente, method: :delete, data: { confirm: t('messages.confirma_remocao') }, class:"btn btn-danger btn-circle" do %>
                       <i class="fa fa-times"></i>
                     <% end %>
                   </td>
@@ -47,7 +47,7 @@
         </table>
         <!-- /.table-responsive -->
     </div>
-    <%= link_to 'New Cliente', new_cliente_path %>
+    <%= link_to t('buttons.incluir'), new_cliente_path %>
   </div>
 </div>
 <!-- /.row -->

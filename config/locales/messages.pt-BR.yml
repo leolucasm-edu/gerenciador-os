@@ -1,0 +1,8 @@
+pt-BR:
+  messages:
+    cadastro_salvo: 'Cadastro realizado com sucesso.'
+    cadastro_atualizado: 'Cadastro atualizado com sucesso.'
+    cadastro_erro: 'Erro ao realizar o cadastro.'
+    atualizacao_erro: 'Erro ao atualizar o cadastro.'
+    cadastro_removido: 'Cadastro removido com sucesso.'
+    confirma_remocao: 'Você tem certeza?'

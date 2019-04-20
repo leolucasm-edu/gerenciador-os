@@ -1,37 +1,56 @@
-<%= form_with(model: cliente, local: true) do |form| %>
-  <% if cliente.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(cliente.errors.count, "error") %> prohibited this cliente from being saved:</h2>
+<div class="row">
+  <div class="col-lg-6">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+      <%= @operacao %>
+      </div>
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-lg-12">
+            <%= form_with(model: cliente, local: true) do |form| %>
+              <% if cliente.errors.any? %>
+                <div id="error_explanation">
+                  <h2><%= pluralize(cliente.errors.count, "error") %> prohibited this cliente from being saved:</h2>
+                  <ul>
+                  <% cliente.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                  <% end %>
+                  </ul>
+                </div>
+              <% end %>
 
-      <ul>
-      <% cliente.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+              <div class="form-group">
+                <%= form.label "Nome" %>
+                <%= form.text_field :nome, id: :cliente_nome, :class=>"form-control" %>
+              </div>
+
+              <div class="form-group">
+                <%= form.label "CPF/CNPJ" %>
+                <%= form.text_field :cpf_cnpj, id: :cliente_cpf_cnpj, :class=>"form-control" %>
+              </div>
+
+              <div class="form-group">
+                <%= form.label 'Nascimento' %>
+                <%= form.date_select :data_nascimento, id: :cliente_data_nascimento, :class=>"form-control" %>
+              </div>
+
+              <div class="form-group">
+                <%= form.label "E-mail" %>
+                <%= form.text_field :email, id: :cliente_email, :class=>"form-control" %>
+              </div>
+
+
+              <div class="actions">
+                <button type="submit" class="btn btn-sm btn-primary"><%= t('buttons.gravar') %></button>
+                <%= link_to t('buttons.voltar'), clientes_path, :class=>"btn btn-sm btn-default" %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+        <!-- /.row (nested) -->
+      </div>
+      <!-- /.panel-body -->
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :nome %>
-    <%= form.text_area :nome, id: :cliente_nome %>
+    <!-- /.panel -->
   </div>
-
-  <div class="field">
-    <%= form.label :cpf_cnpj %>
-    <%= form.text_area :cpf_cnpj, id: :cliente_cpf_cnpj %>
-  </div>
-
-  <div class="field">
-    <%= form.label :data_nascimento %>
-    <%= form.date_select :data_nascimento, id: :cliente_data_nascimento %>
-  </div>
-
-  <div class="field">
-    <%= form.label :email %>
-    <%= form.text_area :email, id: :cliente_email %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>

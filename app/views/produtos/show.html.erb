@@ -1,19 +1,46 @@
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">Produtos</h1>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<!-- /.row -->
+
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Descricao:</strong>
-  <%= @produto.descricao %>
-</p>
+<div class="row">
+  <div class="col-lg-6">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+      <%= @operacao %>
+      </div>
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-lg-12">
+            <%= form_with(model: @produto, local: true) do |form| %>
+            <div class="form-group">
+              <%= form.label :descricao %>
+              <%= form.text_area :descricao, id: :produto_descricao, :class=>"form-control", :readonly=>"true" %>
+            </div>
 
-<p>
-  <strong>Preco compra:</strong>
-  <%= @produto.preco_compra %>
-</p>
+            <div class="form-group">
+              <%= form.label :preco_hora %>
+              <%= form.text_field :preco_compra, id: :produto_preco_compra, :class=>"form-control valor_monetario", :readonly=>"true" %>
+            </div>
 
-<p>
-  <strong>Preco venda:</strong>
-  <%= @produto.preco_venda %>
-</p>
+            <div class="form-group">
+              <%= form.label :preco_hora %>
+              <%= form.text_field :preco_venda, id: :produto_preco_venda, :class=>"form-control valor_monetario", :readonly=>"true" %>
+            </div>
 
-<%= link_to 'Edit', edit_produto_path(@produto) %> |
-<%= link_to 'Back', produtos_path %>
+            <div class="actions">
+              <%= link_to t('buttons.editar'), edit_produto_path(@produto.id), :class=>"btn btn-sm btn-primary" %>
+              <%= link_to t('buttons.voltar'), produtos_path, :class=>"btn btn-sm btn-default" %>
+            </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

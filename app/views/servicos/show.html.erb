@@ -9,14 +9,14 @@
 <p id="notice"><%= notice %></p>
 
 <div class="row">
-  <div class="col-lg-12">
+  <div class="col-lg-6">
     <div class="panel panel-default">
       <div class="panel-heading">
       <%= @operacao %>
       </div>
       <div class="panel-body">
         <div class="row">
-          <div class="col-lg-6">
+          <div class="col-lg-12">
             <%= form_with(model: @servico, local: true) do |form| %>
             <div class="form-group">
               <%= form.label :descricao %>
@@ -29,8 +29,8 @@
             </div>
 
             <div class="actions">
-              <%= link_to 'Editar', edit_servico_path(@servico.id), :class=>"btn btn-sm btn-primary" %>
-              <%= link_to 'Voltar', servicos_path, :class=>"btn btn-sm btn-default" %>
+              <%= link_to t('buttons.editar'), edit_servico_path(@servico.id), :class=>"btn btn-sm btn-primary" %>
+              <%= link_to t('buttons.voltar'), servicos_path, :class=>"btn btn-sm btn-default" %>
             </div>
             <% end %>
           </div>
