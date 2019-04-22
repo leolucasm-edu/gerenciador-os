@@ -16,6 +16,10 @@
 //= require jquery-mask
 //= require bootstrap_sb_admin_base_v2
 //= require turbolinks
+//= require functions
+//= require jquery/jquery.inputmask.bundle
+//= require chartjs/Chart.min
+//= require datepicker/bootstrap-datepicker
+//= require datepicker/locales/bootstrap-datepicker.pt-BR
+//= require timepicker/bootstrap-timepicker
 //= require_tree .
-
-$('.valor_monetario').mask('#.##0,00', {reverse: true});
