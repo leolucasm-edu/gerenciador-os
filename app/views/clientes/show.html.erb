@@ -1,12 +1,11 @@
+<br/>
 <div class="row">
-    <div class="col-lg-12">
-        <h1 class="page-header">Clientes</h1>
-    </div>
-    <!-- /.col-lg-12 -->
+  <div class="col-lg-6">
+    <%= link_to t('buttons.voltar'), clientes_path, :class=>"btn btn-sm btn-default" %>
+    <%= link_to t('buttons.editar'), edit_cliente_path(@cliente.id), :class=>"btn btn-sm btn-primary" %>
+  </div>
 </div>
-<!-- /.row -->
-
-<p id="notice"><%= notice %></p>
+<br/>
 
 <div class="row">
   <div class="col-lg-6">
@@ -19,28 +18,23 @@
           <div class="col-lg-12">
             <%= form_with(model: @cliente, local: true) do |form| %>
             <div class="form-group">
-              <%= form.label "Nome" %>
-              <%= form.text_field :nome, id: :cliente_nome, :class=>"form-control", :readonly=>"true" %>
+              <%= form.label :nome %>
+              <%= form.text_field :nome, id: :cliente_nome, :class=>"form-control show", :readonly=>"true" %>
             </div>
 
             <div class="form-group">
-              <%= form.label "CPF/CNPJ" %>
-              <%= form.text_field :cpf_cnpj, id: :cliente_cpf_cnpj, :class=>"form-control", :readonly=>"true" %>
+              <%= form.label :cpf_cnpj %>
+              <%= form.text_field :cpf_cnpj, id: :cliente_cpf_cnpj, :class=>"form-control show", :readonly=>"true" %>
             </div>
 
             <div class="form-group">
-              <%= form.label "Data de Nascimento" %>
-              <%= form.text_field :data_nascimento, id: :cliente_data_nascimento, :class=>"form-control", :readonly=>"true" %>
+              <%= form.label :data_nascimento %>
+              <%= form.text_field :data_nascimento, id: :cliente_data_nascimento, :class=>"form-control show", :readonly=>"true" %>
             </div>
 
             <div class="form-group">
-              <%= form.label "Email" %>
-              <%= form.text_field :email, id: :cliente_email, :class=>"form-control", :readonly=>"true" %>
-            </div>
-
-            <div class="actions">
-              <%= link_to t('buttons.editar'), edit_cliente_path(@cliente.id), :class=>"btn btn-sm btn-primary" %>
-              <%= link_to t('buttons.voltar'), clientes_path, :class=>"btn btn-sm btn-default" %>
+              <%= form.label :email %>
+              <%= form.text_field :email, id: :cliente_email, :class=>"form-control show", :readonly=>"true" %>
             </div>
             <% end %>
           </div>

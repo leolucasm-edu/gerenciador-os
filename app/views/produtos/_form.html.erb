@@ -1,3 +1,11 @@
+<br/>
+<div class="row">
+  <div class="col-lg-6">
+    <%= link_to t('buttons.voltar'), produtos_path, :class=>"btn btn-sm btn-default" %>
+  </div>
+</div>
+<br/>
+
 <div class="row">
   <div class="col-lg-6">
     <div class="panel panel-default">
@@ -20,23 +28,22 @@
               <% end %>
 
               <div class="form-group">
-                <%= form.label 'Descrição' %>
-                <%= form.text_area :descricao, id: :produto_descricao, :class=>"form-control" %>
+                <%= form.label :descricao %>
+                <%= form.text_field :descricao, id: :produto_descricao, :class=>"form-control" %>
               </div>
 
               <div class="form-group">
-                <%= form.label 'Preço de Compra' %>
-                <%= form.text_field :preco_compra, id: :produto_preco_compra,:class=>"form-control valor_monetario" %>
+                <%= form.label :preco_compra %>
+                <%= form.text_field :preco_compra, id: :produto_preco_compra,:class=>"form-control currency" %>
               </div>
 
               <div class="form-group">
-                <%= form.label 'Preço de Venda' %>
-                <%= form.text_field :preco_venda, id: :produto_preco_venda, :class=>"form-control valor_monetario" %>
+                <%= form.label :preco_venda %>
+                <%= form.text_field :preco_venda, id: :produto_preco_venda, :class=>"form-control currency" %>
               </div>
 
               <div class="actions">
                 <button type="submit" class="btn btn-sm btn-primary"><%= t('buttons.gravar') %></button>
-                <%= link_to t('buttons.voltar'), produtos_path, :class=>"btn btn-sm btn-default" %>
               </div>
             <% end %>
           </div>

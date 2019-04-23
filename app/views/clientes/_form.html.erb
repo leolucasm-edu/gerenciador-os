@@ -1,5 +1,12 @@
 <div class="row">
   <div class="col-lg-6">
+    <%= link_to t('buttons.voltar'), clientes_path, :class=>"btn btn-sm btn-default" %>
+  </div>
+</div>
+<br/>
+
+<div class="row">
+  <div class="col-lg-6">
     <div class="panel panel-default">
       <div class="panel-heading">
       <%= @operacao %>
@@ -20,29 +27,28 @@
               <% end %>
 
               <div class="form-group">
-                <%= form.label "Nome" %>
+                <%= form.label :nome %>
                 <%= form.text_field :nome, id: :cliente_nome, :class=>"form-control" %>
               </div>
 
               <div class="form-group">
-                <%= form.label "CPF/CNPJ", :class=>"control-label" %>
+                <%= form.label :cpf_cnpj %>
                 <%= form.text_field :cpf_cnpj, id: :cliente_cpf_cnpj, :class=>"form-control cpf" %>
               </div>
 
               <div class="form-group">
-                <%= form.label 'Nascimento' %>
+                <%= form.label :data_nascimento %>
                 <%= form.text_field :data_nascimento, id: :cliente_data_nascimento, value: datef(@cliente.data_nascimento), :class=>"form-control date", :placeholder=>"Data" %>
               </div>
 
               <div class="form-group">
-                <%= form.label "E-mail" %>
+                <%= form.label :email %>
                 <%= form.text_field :email, id: :cliente_email, :class=>"form-control" %>
               </div>
 
 
               <div class="actions">
-                <button type="submit" class="btn btn-sm btn-primary"><%= t('buttons.gravar') %></button>
-                <%= link_to t('buttons.voltar'), clientes_path, :class=>"btn btn-sm btn-default" %>
+                <button type="submit" class="btn btn-sm btn-primary"><%= t('buttons.gravar') %></button>                
               </div>
             <% end %>
           </div>

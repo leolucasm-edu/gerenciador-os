@@ -14,6 +14,17 @@
  *= require bootstrap_sb_admin_base_v2
  *= require_self
  */
+.sidebar ul li, .navbar-top-links .dropdown-menu li{
+  font-size: 12px !important;
+}
+
+.page-header{
+  font-size: 28px !important;
+}
+
+.form-control, .panel-heading, label, td, tr {
+  font-size: 13px !important;
+}
 
  .notice-header, .notice-warning {
    margin-top: 12px;
@@ -27,6 +38,7 @@
    border-color: #00733e;
    background-color: #00a65a !important;
    color: white;
+   font-size: 12px;
  }
 
  .notice-warning {
@@ -49,3 +61,7 @@
    background-color: #d73925 !important;
    color: white;
  }
+
+.show {
+  background-color: white !important;
+}
