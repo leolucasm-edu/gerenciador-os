@@ -11,17 +11,20 @@ class ServicosController < ApplicationController
   # GET /servicos/1
   # GET /servicos/1.json
   def show
+    @quantidade = Servico.all.size
     @operacao = "Visualização"
   end
 
   # GET /servicos/new
   def new
+    @quantidade = Servico.all.size
     @operacao = "Inclusão"
     @servico = Servico.new
   end
 
   # GET /servicos/1/edit
   def edit
+    @quantidade = Servico.all.size
     @operacao = "Edição"
   end
 

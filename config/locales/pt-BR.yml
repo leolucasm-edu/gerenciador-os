@@ -1,5 +1,28 @@
 pt-BR:
   activerecord:
+    models:
+      servico:
+        one: 'Serviço'
+        other: 'Serviços'
+      produto:
+        one: 'Produto'
+        other: 'Produtos'
+      cliente:
+        one: 'Cliente'
+        other: 'Clientes'
+    attributes:
+      servico:
+        descricao: 'Descrição'
+        preco_hora: 'Preço/Hora'
+      produto:
+        descricao: 'Descrição'
+        preco_compra: 'Preço de Compra'
+        preco_venda: 'Preço de Venda'
+      cliente:
+        nome: 'Nome'
+        cpf_cnpj: 'CPF/CNPJ'
+        email: 'E-mail'
+        data_nascimento: 'Nascimento'
     errors:
       messages:
         record_invalid: 'A validação falhou: %{errors}'
