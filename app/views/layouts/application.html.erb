@@ -26,6 +26,8 @@
       <% if user_signed_in? %>
         <%= render partial: "layouts/navbar" %>
         <div id="page-wrapper">
+          <br/>
+          <%= render "layouts/notices" %>
           <%= yield %>
         </div>
       <% else %>
@@ -34,6 +36,16 @@
 
     </div>
     <!-- /#wrapper -->
+    <script>
+      $(document).ready(function() {
+
+            // MÁSCARAS
+            Mask(".currency");
+            Mask(".date");
+            Mask(".cpf");
+            Mask(".cnpj");
+      });
+    </script>
   </body>
 
 </html>

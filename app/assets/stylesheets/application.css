@@ -14,3 +14,38 @@
  *= require bootstrap_sb_admin_base_v2
  *= require_self
  */
+
+ .notice-header, .notice-warning {
+   margin-top: 12px;
+ }
+
+ .notice {
+   border-radius: 3px;
+   margin-bottom: -2px;
+   padding: 10px 25px 10px 10px;
+   border-left: 5px solid #eee;
+   border-color: #00733e;
+   background-color: #00a65a !important;
+   color: white;
+ }
+
+ .notice-warning {
+   border-radius: 3px;
+   margin-bottom: -2px;
+   padding: 10px 25px 10px 10px;
+   border-left: 5px solid #eee;
+   border-color: #b18708;
+   background-color: #daaa19 !important;
+   color: white;
+ }
+
+ .alert {
+   border-radius: 3px;
+   margin-top: 12px;
+   margin-bottom: -2px;
+   padding: 10px 25px 10px 10px;
+   border-left: 5px solid #eee;
+   border-color: #c9321f;
+   background-color: #d73925 !important;
+   color: white;
+ }

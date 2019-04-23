@@ -25,13 +25,13 @@
               </div>
 
               <div class="form-group">
-                <%= form.label "CPF/CNPJ" %>
-                <%= form.text_field :cpf_cnpj, id: :cliente_cpf_cnpj, :class=>"form-control" %>
+                <%= form.label "CPF/CNPJ", :class=>"control-label" %>
+                <%= form.text_field :cpf_cnpj, id: :cliente_cpf_cnpj, :class=>"form-control cpf" %>
               </div>
 
               <div class="form-group">
                 <%= form.label 'Nascimento' %>
-                <%= form.date_select :data_nascimento, id: :cliente_data_nascimento, :class=>"form-control" %>
+                <%= form.text_field :data_nascimento, id: :cliente_data_nascimento, value: datef(@cliente.data_nascimento), :class=>"form-control date", :placeholder=>"Data" %>
               </div>
 
               <div class="form-group">
