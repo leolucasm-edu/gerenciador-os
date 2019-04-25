@@ -1,11 +1,26 @@
+html, body { margin:0; height: 100%;}
+
 body {
-  background-image:url('');
-  background-position:center;
-  background-size:cover;
+  background-image:url('https://vanzolini.org.br/wp-content/uploads/2016/05/recuperacao-judicial-768x538.jpg');
+  background-repeat: no-repeat;
+  background-position:center center;
+  overflow: hidden;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
 
   -webkit-font-smoothing: antialiased;
   font: normal 14px Roboto,arial,sans-serif;
   font-family: 'Dancing Script', cursive;
+
+  position:absolute;
+  top:50%;
+  left:50%;
+  margin-top:-250px;
+  margin-left:-150px;
 }
 
 .container {
@@ -14,24 +29,24 @@ body {
 ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
     color: #ffffff!important;
     opacity: 1; /* Firefox */
-    font-size:18px!important;
+    font-size:14px!important;
 }
 .form-login {
-    background-color: rgba(0,0,0,0.55);
+    background-color: rgba(0,0,0,0.85);
     padding-top: 10px;
     padding-bottom: 20px;
     padding-left: 20px;
     padding-right: 20px;
-    border-radius: 15px;
+    --border-radius: 15px;
     border-color:#d2d2d2;
     border-width: 5px;
     color:white;
-    box-shadow:0 1px 0 #cfcfcf;
 }
 .form-control{
     background:transparent!important;
     color:white!important;
-    font-size: 18px!important;
+    font-size: 14px!important;
+    border-radius: 10px;
 }
 
 h1{
@@ -44,9 +59,6 @@ h4 {
  text-align: center;
 }
 
-.form-control {
-    border-radius: 10px;
-}
 .text-white{
     color: white!important;
 }

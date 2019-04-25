@@ -1,9 +1,10 @@
 <div class="row">
-        <div class="col-md-offset-4 col-md-3 text-center">
+        <div class="col-md-3 text-center">
             <h1 class='text-white'>GerenciadorOS</h1>
             <div class="form-login"></br>
                 <h4>Login</h4>
                 </br>
+                <%= render "devise/shared/error_messages", resource: resource %>
                 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
                   <div class="field">
                     <%= f.email_field :email, autofocus: true, autocomplete: "email", :class=>"form-control input-sm chat-input", :placeholder=>"E-mail" %>
@@ -12,9 +13,8 @@
                   <div class="field">
                     <%= f.password_field :password, autocomplete: "current-password", :class=>"form-control input-sm chat-input", :placeholder=>"Senha" %>
                   </div>
-                  </br>
 
-                  <% if devise_mapping.rememberable? %>
+                  <% if devise_mapping.rememberable? & 1==2 %>
                     <div class="field">
                       <%= f.check_box :remember_me %>
                       <%= f.label :remember_me %>
@@ -23,7 +23,7 @@
 
                   </br></br>
                   <div class="actions">
-                    <%= f.submit "Log in", :class=>"btn btn-primary btn-md" %>
+                    <%= f.submit "Acessar", :class=>"btn btn-primary btn-sm" %>
                   </div>
                 <% end %>
                 </br>
