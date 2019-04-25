@@ -1,8 +1,8 @@
 <br/>
 <div class="row">
   <div class="col-lg-6">
-    <%= link_to t('buttons.editar'), edit_produto_path(@produto.id), :class=>"btn btn-sm btn-primary" %>
     <%= link_to t('buttons.voltar'), produtos_path, :class=>"btn btn-sm btn-default" %>
+    <%= link_to t('buttons.editar'), edit_produto_path(@produto.id), :class=>"btn btn-sm btn-primary" %>
   </div>
 </div>
 <br/>
@@ -23,12 +23,12 @@
             </div>
 
             <div class="form-group">
-              <%= form.label :preco_hora %>
+              <%= form.label :preco_compra %>
               <%= form.text_field :preco_compra, id: :produto_preco_compra, :class=>"form-control currency show", :readonly=>"true" %>
             </div>
 
             <div class="form-group">
-              <%= form.label :preco_hora %>
+              <%= form.label :preco_venda %>
               <%= form.text_field :preco_venda, id: :produto_preco_venda, :class=>"form-control currency show", :readonly=>"true" %>
             </div>
             <% end %>

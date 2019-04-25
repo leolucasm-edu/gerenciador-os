@@ -27,6 +27,14 @@
               <% end %>
 
               <div class="form-group">
+                <label>Tipo</label>
+                <select class="form-control" name="tipo_cliente" id="tipo_cliente">
+                  <option value="fisico">Físico</option>
+                  <option value="juridico">Jurídico</option>
+                </select>
+              </div>
+
+              <div class="form-group">
                 <%= form.label :nome %>
                 <%= form.text_field :nome, id: :cliente_nome, :class=>"form-control" %>
               </div>
@@ -36,7 +44,7 @@
                 <%= form.text_field :cpf_cnpj, id: :cliente_cpf_cnpj, :class=>"form-control cpf" %>
               </div>
 
-              <div class="form-group">
+              <div class="form-group" id="grupo_data_nascimento">
                 <%= form.label :data_nascimento %>
                 <%= form.text_field :data_nascimento, id: :cliente_data_nascimento, value: datef(@cliente.data_nascimento), :class=>"form-control date", :placeholder=>"Data" %>
               </div>
@@ -48,7 +56,7 @@
 
 
               <div class="actions">
-                <button type="submit" class="btn btn-sm btn-primary"><%= t('buttons.gravar') %></button>                
+                <button type="submit" class="btn btn-sm btn-primary"><%= t('buttons.gravar') %></button>
               </div>
             <% end %>
           </div>
@@ -60,3 +68,28 @@
     <!-- /.panel -->
   </div>
 </div>
+
+<script>
+  $(document).ready(function(){
+
+    configuraCampos();
+
+    function configuraCampos(){
+      if ($('#tipo_cliente').val() == 'juridico'){
+        $('#grupo_data_nascimento').hide();
+        $('#cliente_cpf_cnpj').removeClass('cpf');
+        $('#cliente_cpf_cnpj').addClass('cnpj');
+        Mask(".cnpj");
+      } else {
+        $('#grupo_data_nascimento').show();
+        $('#cliente_cpf_cnpj').removeClass('cnpj');
+        $('#cliente_cpf_cnpj').addClass('cpf');
+        Mask(".cpf");
+      }
+    }
+
+    $('#tipo_cliente').change(function(){
+      configuraCampos();
+    });
+  });
+</script>
