@@ -28,7 +28,7 @@ module ApplicationHelper
     ["São Paulo", "SP"],
     ["Sergipe", "SE"],
     ["Tocantins", "TO"]
-  ]  
+  ]
 
   def options_for_states(selected)
     options_for_select(ESTADOS_BRASILEIROS, selected)
@@ -46,6 +46,42 @@ module ApplicationHelper
   def render_notices(msg)
     if notice
        raw('<p class="notice" id="notice">') + msg + raw('</p>')
+    end
+  end
+
+  # Monta HTML de alertas
+  def render_alerts(obj)
+
+    if obj.errors.any?
+
+       html =
+          raw('<div class="row">') +
+          raw('<div class="content-alerts col-md-6">') +
+          raw('<div class="alert alert-error">') +
+          raw('<h4>') + pluralize(obj.errors.count, "erro", "erros") +
+            ' ' + "encontrado".pluralize(obj.errors.count) +
+            raw(':</h4>') +
+          raw('<ul>');
+
+       obj.errors.full_messages.each do |msg|
+          html += raw('<li>') + msg + raw('</li>')
+       end
+
+       html +=
+          raw('</ul>') +
+          raw('</div>') +
+          raw('</div>') +
+          raw('</div>');
+
+       return html;
+
+    end
+  end
+
+  # Monta HTML de avisos
+  def render_notices(msg)
+    if notice
+       raw('<div class="row"><p class="notice col-md-6" id="notice">') + msg + raw('</p></div>')
     end
   end
 end

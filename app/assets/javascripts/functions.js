@@ -134,18 +134,7 @@ function Mask(oClass) {
       break;
     case '.cartao_credito':
       $(oClass).inputmask("9999-9999-9999-9999");
-      break;
-    case '.csindical':
-      // $(oClass).inputmask("999.999.999.99999-9");
-      $(oClass).inputmask("Regex", {
-        regex: "[0-9\.\-]*" // Permite somente números, pontos e traços
-      });
-      break;
-    case '.classe_planocontas':
-      $(oClass).inputmask("Regex", {
-        regex: "[0-9]{2}(\\.[0-9]{2})*"
-      });
-      break;
+      break;  
   }
 
 }

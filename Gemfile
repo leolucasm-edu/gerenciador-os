@@ -4,6 +4,8 @@ source 'https://rubygems.org'
 gem 'rails', '~> 5.1.6', '>= 5.1.6.1'
 # Use sqlite3 as the database for Active Record
 gem 'pg'
+# CPF and CNPJ validations for ActiveModel and Rails
+gem 'validates_cpf_cnpj'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets

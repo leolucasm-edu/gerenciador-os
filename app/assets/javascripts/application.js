@@ -12,6 +12,7 @@
 //
 //= require rails-ujs
 //= require jquery
+//= require cocoon
 //= require jquery_ujs
 //= require jquery-mask
 //= require bootstrap_sb_admin_base_v2
@@ -22,5 +23,5 @@
 //= require datepicker/bootstrap-datepicker
 //= require datepicker/locales/bootstrap-datepicker.pt-BR
 //= require timepicker/bootstrap-timepicker
-//= require cocoon
+//= require cocoon_callbacks
 //= require_tree .

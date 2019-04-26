@@ -5,6 +5,9 @@
 </div>
 <br/>
 
+<%= render_alerts @cliente %>
+<br>
+
 <%= form_with(model: cliente, local: true) do |form| %>
   <div class="row">
     <div class="col-lg-6">
@@ -15,16 +18,6 @@
         <div class="panel-body">
           <div class="row">
             <div class="col-lg-12">
-                <% if cliente.errors.any? %>
-                  <div id="error_explanation">
-                    <h2><%= pluralize(cliente.errors.count, "error") %> prohibited this cliente from being saved:</h2>
-                    <ul>
-                    <% cliente.errors.full_messages.each do |message| %>
-                      <li><%= message %></li>
-                    <% end %>
-                    </ul>
-                  </div>
-                <% end %>
 
                 <div class="form-group">
                   <label>Tipo</label>
@@ -55,49 +48,6 @@
         <!-- /.panel-body -->
       </div>
       <!-- /.panel -->
-    </div>
-
-    <div id="telefones">
-      <%= form.fields_for :telefones do |telefones_fields| %>
-        <%= render partial: "telefone_fields", locals: { f: telefones_fields } %>
-      <% end %>
-    </div>
-
-    <div class="col-lg-6">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-        Telefones
-        </div>
-
-        <div class="panel-body">
-          <div class="row">
-            <div id="telefones">
-              <% link_to_add_association('[Adicionar Telefone]', form, :telefones) %>
-              <%= form.fields_for :telefones do |t| %>
-                <% render partial: "telefone_fields", locals: {f: t} %>
-              <% end %>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-lg-6">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-        E-mails
-        </div>
-        <div class="panel-body">
-          <div class="row">
-            <div id="emails" class="col-lg-12">
-              <% link_to_add_association('[Adicionar Email]', form, :emails) %>
-              <%= form.fields_for :emails do |e| %>
-                <% render partial: "email_fields", locals: {f: e} %>
-              <% end %>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
 
   </div>
@@ -148,9 +98,9 @@
               </div>
             </div>
             <div class="col-lg-4">
-              <div class="form-group">
+              <div class="field form-group">
                 <%= e.label :estado %>
-                <%= e.select :estado, options_for_states(@cliente.endereco.estado), :class=>"form-control" %>
+                <%= e.select :estado, options_for_states(@cliente.endereco.estado), {}, {:class=>"form-control"} %>
               </div>
             </div>
           </div>
@@ -159,6 +109,55 @@
     </div>
   </div>
   <% end %>
+
+  <div class="row">
+    <div class="col-lg-6">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+        Telefones
+        </div>
+
+        <div class="panel-body">
+          <div class="row">
+            <div id="telefones" class="col-lg-12">
+              <%= form.fields_for :telefones do |t| %>
+                <%= render partial: "telefone_fields", locals: {f: t} %>
+              <% end %>
+              <div class="links text-right">
+                <br>
+                <%= link_to_add_association('', form, :telefones,  class: "btn btn-sm btn-default fa fa-plus") %>
+                <br>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-6">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+        E-mails
+        </div>
+        <div class="panel-body">
+          <div class="row">
+            <div id="emails" class="col-lg-12">
+              <%= form.fields_for :emails do |e| %>
+                <%= render partial: "email_fields", locals: {f: e} %>
+              <% end %>
+              <div class="links text-right">
+                <br>
+                <%= link_to_add_association('', form, :emails, class: "btn btn-sm btn-default fa fa-plus") %>
+                <br>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <div class="actions">
     <button type="submit" class="btn btn-sm btn-primary"><%= t('buttons.gravar') %></button>
@@ -173,11 +172,20 @@
   $(document).ready(function(){
 
     configuraCampos();
+    montaCampos();
     Mask(".cep");
     Mask(".numeros");
-
+    Mask(".phone");
 
     function configuraCampos(){
+      if ($('#cliente_cpf_cnpj').val().length == 18){
+        $('#tipo_cliente').val('juridico');
+      } else {
+        $('#tipo_cliente').val('fisico');
+      }
+    }
+
+    function montaCampos(){
       if ($('#tipo_cliente').val() == 'juridico'){
         $('#grupo_data_nascimento').hide();
         $('#cliente_cpf_cnpj').removeClass('cpf');
@@ -192,7 +200,7 @@
     }
 
     $('#tipo_cliente').change(function(){
-      configuraCampos();
+      montaCampos();
     });
   });
 </script>

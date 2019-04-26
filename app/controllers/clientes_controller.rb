@@ -19,6 +19,8 @@ class ClientesController < ApplicationController
     @operacao = "Inclusão"
     @cliente = Cliente.new
     @cliente.build_endereco
+    @cliente.telefones.build
+    @cliente.emails.build
   end
 
   # GET /clientes/1/edit
@@ -29,13 +31,15 @@ class ClientesController < ApplicationController
   # POST /clientes
   # POST /clientes.json
   def create
-    @cliente = Cliente.new(cliente_params)
+    @cliente = Cliente.new(cliente_params)    
 
     respond_to do |format|
       if @cliente.save
         format.html { redirect_to @cliente, notice: t('messages.cadastro_salvo') }
         format.json { render :show, status: :created, location: @cliente }
       else
+        @cliente.telefones.build unless @cliente.telefones.size > 0
+        @cliente.emails.build unless @cliente.emails.size > 0
         format.html { render :new }
         format.json { render json: @cliente.errors, status: :unprocessable_entity }
       end
@@ -79,7 +83,7 @@ class ClientesController < ApplicationController
         :cpf_cnpj,
         :data_nascimento,
         endereco_attributes: [:rua, :cidade, :estado, :numero, :cep, :complemento, :bairro],
-        telefone_attributes: [:id, :telefone, :_destroy],
+        telefones_attributes: [:id, :telefone, :_destroy],
         emails_attributes: [:id, :email, :_destroy]
       )
     end
