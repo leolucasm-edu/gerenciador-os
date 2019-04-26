@@ -14,7 +14,10 @@
                 <tr>
                   <th>Nome</th>
                   <th>CPF/CNPJ</th>
-                  <th>E-mail</th>
+                  <th>Endereço</th>
+                  <th>Bairro</th>
+                  <th>Cidade</th>
+                  <th>Estado</th>
                   <th colspan="3"></th>
                 </tr>
             </thead>
@@ -22,7 +25,11 @@
               <% @clientes.each do |cliente| %>
                 <tr>
                   <td><%= cliente.nome %></td>
-                  <td><%= cliente.cpf_cnpj %></td>                  
+                  <td><%= cliente.cpf_cnpj %></td>
+                  <td> <%= cliente.endereco.rua %> - Nº <%= cliente.endereco.numero %></td>
+                  <td><%= cliente.endereco.bairro %></td>
+                  <td><%= cliente.endereco.cidade %></td>
+                  <td><%= cliente.endereco.estado %></td>
                   <td style="width: 3%; text-align: center;">
                     <%= link_to cliente, class:"btn btn-primary btn-circle" do %>
                       <i class="fa fa-eye"></i>
