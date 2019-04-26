@@ -11,3 +11,11 @@ pt-BR:
     cpf_cnpj: CPF/CNPJ
     data_nascimento: Data de Nascimento
     email: E-mail
+  endereco:
+    rua: Rua
+    numero: Número
+    complemento: Complemento
+    bairro: Bairro
+    cidade: Cidade
+    estado: Estado
+    cep: CEP

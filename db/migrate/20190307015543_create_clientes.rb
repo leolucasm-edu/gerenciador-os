@@ -4,7 +4,6 @@ class CreateClientes < ActiveRecord::Migration[5.1]
       t.text :nome
       t.text :cpf_cnpj
       t.date :data_nascimento
-      t.text :email
 
       t.timestamps
     end

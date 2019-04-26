@@ -5,74 +5,177 @@
 </div>
 <br/>
 
-<div class="row">
-  <div class="col-lg-6">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-      <%= @operacao %>
-      </div>
-      <div class="panel-body">
-        <div class="row">
-          <div class="col-lg-12">
-            <%= form_with(model: cliente, local: true) do |form| %>
-              <% if cliente.errors.any? %>
-                <div id="error_explanation">
-                  <h2><%= pluralize(cliente.errors.count, "error") %> prohibited this cliente from being saved:</h2>
-                  <ul>
-                  <% cliente.errors.full_messages.each do |message| %>
-                    <li><%= message %></li>
-                  <% end %>
-                  </ul>
+<%= form_with(model: cliente, local: true) do |form| %>
+  <div class="row">
+    <div class="col-lg-6">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+        <%= @operacao %>
+        </div>
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-lg-12">
+                <% if cliente.errors.any? %>
+                  <div id="error_explanation">
+                    <h2><%= pluralize(cliente.errors.count, "error") %> prohibited this cliente from being saved:</h2>
+                    <ul>
+                    <% cliente.errors.full_messages.each do |message| %>
+                      <li><%= message %></li>
+                    <% end %>
+                    </ul>
+                  </div>
+                <% end %>
+
+                <div class="form-group">
+                  <label>Tipo</label>
+                  <select class="form-control" name="tipo_cliente" id="tipo_cliente">
+                    <option value="fisico">Físico</option>
+                    <option value="juridico">Jurídico</option>
+                  </select>
                 </div>
+
+                <div class="form-group">
+                  <%= form.label :nome %>
+                  <%= form.text_field :nome, id: :cliente_nome, :class=>"form-control" %>
+                </div>
+
+                <div class="form-group">
+                  <%= form.label :cpf_cnpj %>
+                  <%= form.text_field :cpf_cnpj, id: :cliente_cpf_cnpj, :class=>"form-control cpf" %>
+                </div>
+
+                <div class="form-group" id="grupo_data_nascimento">
+                  <%= form.label :data_nascimento %>
+                  <%= form.text_field :data_nascimento, id: :cliente_data_nascimento, value: datef(@cliente.data_nascimento), :class=>"form-control date", :placeholder=>"Data" %>
+                </div>
+            </div>
+          </div>
+          <!-- /.row (nested) -->
+        </div>
+        <!-- /.panel-body -->
+      </div>
+      <!-- /.panel -->
+    </div>
+
+    <div id="telefones">
+      <%= form.fields_for :telefones do |telefones_fields| %>
+        <%= render partial: "telefone_fields", locals: { f: telefones_fields } %>
+      <% end %>
+    </div>
+
+    <div class="col-lg-6">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+        Telefones
+        </div>
+
+        <div class="panel-body">
+          <div class="row">
+            <div id="telefones">
+              <% link_to_add_association('[Adicionar Telefone]', form, :telefones) %>
+              <%= form.fields_for :telefones do |t| %>
+                <% render partial: "telefone_fields", locals: {f: t} %>
               <% end %>
-
-              <div class="form-group">
-                <label>Tipo</label>
-                <select class="form-control" name="tipo_cliente" id="tipo_cliente">
-                  <option value="fisico">Físico</option>
-                  <option value="juridico">Jurídico</option>
-                </select>
-              </div>
-
-              <div class="form-group">
-                <%= form.label :nome %>
-                <%= form.text_field :nome, id: :cliente_nome, :class=>"form-control" %>
-              </div>
-
-              <div class="form-group">
-                <%= form.label :cpf_cnpj %>
-                <%= form.text_field :cpf_cnpj, id: :cliente_cpf_cnpj, :class=>"form-control cpf" %>
-              </div>
-
-              <div class="form-group" id="grupo_data_nascimento">
-                <%= form.label :data_nascimento %>
-                <%= form.text_field :data_nascimento, id: :cliente_data_nascimento, value: datef(@cliente.data_nascimento), :class=>"form-control date", :placeholder=>"Data" %>
-              </div>
-
-              <div class="form-group">
-                <%= form.label :email %>
-                <%= form.text_field :email, id: :cliente_email, :class=>"form-control" %>
-              </div>
-
-
-              <div class="actions">
-                <button type="submit" class="btn btn-sm btn-primary"><%= t('buttons.gravar') %></button>
-              </div>
-            <% end %>
+            </div>
           </div>
         </div>
-        <!-- /.row (nested) -->
       </div>
-      <!-- /.panel-body -->
     </div>
-    <!-- /.panel -->
+
+    <div class="col-lg-6">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+        E-mails
+        </div>
+        <div class="panel-body">
+          <div class="row">
+            <div id="emails" class="col-lg-12">
+              <% link_to_add_association('[Adicionar Email]', form, :emails) %>
+              <%= form.fields_for :emails do |e| %>
+                <% render partial: "email_fields", locals: {f: e} %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
-</div>
+
+  <%= form.fields_for :endereco do |e| %>
+  <div class="row">
+    <div class="col-lg-6">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          Endereço
+        </div>
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-lg-8">
+              <div class="form-group">
+                <%= e.label :rua %>
+                <%= e.text_field :rua, id: :endereco_rua, :class=>"form-control" %>
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="form-group">
+                <%= e.label :numero %>
+                <%= e.text_field :numero, id: :endereco_numero, :class=>"form-control numeros" %>
+              </div>
+            </div>
+            <div class="col-lg-8">
+              <div class="form-group">
+                <%= e.label :complemento %>
+                <%= e.text_field :complemento, id: :endereco_complemento, :class=>"form-control" %>
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="form-group">
+                <%= e.label :cep %>
+                <%= e.text_field :cep, id: :endereco_cep, :class=>"form-control cep" %>
+              </div>
+            </div>
+            <div class="col-lg-12">
+              <div class="form-group">
+                <%= e.label :bairro %>
+                <%= e.text_field :bairro, id: :endereco_bairro, :class=>"form-control" %>
+              </div>
+            </div>
+            <div class="col-lg-8">
+              <div class="form-group">
+                <%= e.label :cidade %>
+                <%= e.text_field :cidade, id: :endereco_cidade, :class=>"form-control" %>
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="form-group">
+                <%= e.label :estado %>
+                <%= e.select :estado, options_for_states(@cliente.endereco.estado), :class=>"form-control" %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% end %>
+
+  <div class="actions">
+    <button type="submit" class="btn btn-sm btn-primary"><%= t('buttons.gravar') %></button>
+  </div>
+
+  <br>
+
+<% end %>
+
 
 <script>
   $(document).ready(function(){
 
     configuraCampos();
+    Mask(".cep");
+    Mask(".numeros");
+
 
     function configuraCampos(){
       if ($('#tipo_cliente').val() == 'juridico'){

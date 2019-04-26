@@ -18,6 +18,7 @@ class ClientesController < ApplicationController
   def new
     @operacao = "Inclusão"
     @cliente = Cliente.new
+    @cliente.build_endereco
   end
 
   # GET /clientes/1/edit
@@ -73,6 +74,13 @@ class ClientesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def cliente_params
-      params.require(:cliente).permit(:nome, :cpf_cnpj, :data_nascimento, :email)
+      params.require(:cliente).permit(
+        :nome,
+        :cpf_cnpj,
+        :data_nascimento,
+        endereco_attributes: [:rua, :cidade, :estado, :numero, :cep, :complemento, :bairro],
+        telefone_attributes: [:id, :telefone, :_destroy],
+        emails_attributes: [:id, :email, :_destroy]
+      )
     end
 end

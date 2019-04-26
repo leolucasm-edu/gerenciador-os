@@ -22,8 +22,7 @@
               <% @clientes.each do |cliente| %>
                 <tr>
                   <td><%= cliente.nome %></td>
-                  <td><%= cliente.cpf_cnpj %></td>
-                  <td><%= cliente.email %></td>
+                  <td><%= cliente.cpf_cnpj %></td>                  
                   <td style="width: 3%; text-align: center;">
                     <%= link_to cliente, class:"btn btn-primary btn-circle" do %>
                       <i class="fa fa-eye"></i>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190307034833) do
+ActiveRecord::Schema.define(version: 20190426031839) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,9 +19,30 @@ ActiveRecord::Schema.define(version: 20190307034833) do
     t.text "nome"
     t.text "cpf_cnpj"
     t.date "data_nascimento"
-    t.text "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "emails", force: :cascade do |t|
+    t.string "email"
+    t.bigint "cliente_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cliente_id"], name: "index_emails_on_cliente_id"
+  end
+
+  create_table "enderecos", force: :cascade do |t|
+    t.string "rua"
+    t.string "cidade"
+    t.string "estado"
+    t.string "cep"
+    t.string "numero"
+    t.string "bairro"
+    t.string "complemento"
+    t.bigint "cliente_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cliente_id"], name: "index_enderecos_on_cliente_id"
   end
 
   create_table "produtos", force: :cascade do |t|
@@ -39,6 +60,14 @@ ActiveRecord::Schema.define(version: 20190307034833) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "telefones", force: :cascade do |t|
+    t.string "telefone"
+    t.bigint "cliente_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cliente_id"], name: "index_telefones_on_cliente_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -51,4 +80,7 @@ ActiveRecord::Schema.define(version: 20190307034833) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "emails", "clientes"
+  add_foreign_key "enderecos", "clientes"
+  add_foreign_key "telefones", "clientes"
 end

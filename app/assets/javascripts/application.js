@@ -22,4 +22,5 @@
 //= require datepicker/bootstrap-datepicker
 //= require datepicker/locales/bootstrap-datepicker.pt-BR
 //= require timepicker/bootstrap-timepicker
+//= require cocoon
 //= require_tree .

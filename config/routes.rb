@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :emails
+  resources :enderecos
+  resources :telefones
   get 'dashboard/index'
 
   resources :servicos

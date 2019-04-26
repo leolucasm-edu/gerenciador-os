@@ -10,6 +10,15 @@ pt-BR:
       cliente:
         one: 'Cliente'
         other: 'Clientes'
+      endereco:
+        one: 'Endereço'
+        other: 'Endereços'
+      email:
+        one: 'E-mail'
+        other: 'E-mails'
+      telefone:
+        one: 'Telefone'
+        other: 'Telefones'
     attributes:
       servico:
         descricao: 'Descrição'
@@ -23,6 +32,18 @@ pt-BR:
         cpf_cnpj: 'CPF/CNPJ'
         email: 'E-mail'
         data_nascimento: 'Nascimento'
+      endereco:
+        rua: Rua
+        numero: Número
+        complemento: Complemento
+        bairro: Bairro
+        cidade: Cidade
+        estado: Estado
+        cep: CEP
+      email:
+        email: E-mail
+      telefone:
+        telefone: Telefone
     errors:
       messages:
         record_invalid: 'A validação falhou: %{errors}'
