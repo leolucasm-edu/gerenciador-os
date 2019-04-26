@@ -26,11 +26,12 @@
                 <%= form.label :cpf_cnpj %>
                 <%= form.text_field :cpf_cnpj, id: :cliente_cpf_cnpj, :class=>"form-control show", :readonly=>"true" %>
               </div>
-
-              <div class="form-group">
-                <%= form.label :data_nascimento %>
-                <%= form.text_field :data_nascimento, id: :cliente_data_nascimento, :class=>"form-control show", :readonly=>"true" %>
-              </div>
+              <% if @cliente.cpf_cnpj.length == 14 %>
+                <div class="form-group">
+                  <%= form.label :data_nascimento %>                  
+                  <%= form.text_field :data_nascimento, id: :cliente_data_nascimento, value: datef(@cliente.data_nascimento), :class=>"form-control date show", :readonly=>"true" %>
+                </div>
+              <% end %>
             </div>
           </div>
         </div>
