@@ -16,6 +16,9 @@ pt-BR:
       email:
         one: 'E-mail'
         other: 'E-mails'
+      funcionario:
+        one: 'Funcionário'
+        other: 'Funcionários'
       telefone:
         one: 'Telefone'
         other: 'Telefones'
@@ -32,6 +35,12 @@ pt-BR:
         cpf_cnpj: 'CPF/CNPJ'
         email: 'E-mail'
         data_nascimento: 'Nascimento'
+      funcionario:
+        nome: Nome
+        cnpj: CPF
+        data_nascimento: Data de Nascimento
+        email: E-mail
+        telefone: Telefone
       endereco:
         rua: Rua
         numero: Número

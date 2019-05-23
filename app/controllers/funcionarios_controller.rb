@@ -6,6 +6,7 @@ class FuncionariosController < ApplicationController
   # GET /funcionarios.json
   def index
     @funcionarios = Funcionario.all
+    @users = User.all
   end
 
   # GET /funcionarios/1
@@ -46,7 +47,7 @@ class FuncionariosController < ApplicationController
       if @user.save()
         @funcionario.user_id = @user.id
         @funcionario.save!
-        flash[:notice] = "Novo usuário cadastrado."
+        flash[:notice] = "Novo funcionário cadastrado."
         redirect_to funcionarios_path and return
       end
       raise ActiveRecord::Rollback
@@ -73,10 +74,13 @@ class FuncionariosController < ApplicationController
   # DELETE /funcionarios/1
   # DELETE /funcionarios/1.json
   def destroy
-    @funcionario.destroy
-    respond_to do |format|
-      format.html { redirect_to funcionarios_url, notice: 'Funcionario was successfully destroyed.' }
-      format.json { head :no_content }
+    User.transaction do
+      @user.destroy
+      @funcionario.destroy
+      respond_to do |format|
+        format.html { redirect_to funcionarios_url, notice: 'Funcionario excluído com sucesso.' }
+        format.json { head :no_content }
+      end
     end
   end
 
@@ -97,6 +101,6 @@ class FuncionariosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def funcionario_params
-      params.require(:funcionario).permit(:nome, :cnpj, :data_nascimento, :user_id)
+      params.require(:funcionario).permit(:nome, :cnpj, :data_nascimento, :telefone, :user_id)
     end
 end

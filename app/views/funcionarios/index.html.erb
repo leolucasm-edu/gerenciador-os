@@ -21,27 +21,28 @@
             </thead>
             <tbody>
               <% @funcionarios.each do |funcionario| %>
-                <tr>
-                  <td><%= funcionario.nome %></td>
-                  <td><%= funcionario.cnpj %></td>
-                  <td><%= funcionario.email %></td>
-                  <td><%= funcionario.data_nascimento %></td>
-                  <td style="width: 3%; text-align: center;">
-                    <%= link_to funcionario, class:"btn btn-primary btn-circle" do %>
-                      <i class="fa fa-eye"></i>
-                    <% end %>
-                  </td>
-                  <td style="width: 3%; text-align: center;">
-                    <%= link_to edit_funcionario_path(funcionario), class:"btn btn-success btn-circle" do %>
-                      <i class="fa fa-edit"></i>
-                    <% end %>
-                  </td>
-                  <td style="width: 3%; text-align: center;">
-                    <%= link_to funcionario, method: :delete, data: { confirm: t('messages.confirma_remocao') }, class:"btn btn-danger btn-circle" do %>
-                      <i class="fa fa-times"></i>
-                    <% end %>
-                  </td>
-                </tr>
+                <% user = @users.find_by(id: funcionario.user_id) %>
+                  <tr>
+                    <td><%= funcionario.nome %></td>
+                    <td><%= funcionario.cnpj %></td>
+                    <td><%= user.email %></td>
+                    <td><%= funcionario.data_nascimento %></td>
+                    <td style="width: 3%; text-align: center;">
+                      <%= link_to funcionario, class:"btn btn-primary btn-circle" do %>
+                        <i class="fa fa-eye"></i>
+                      <% end %>
+                    </td>
+                    <td style="width: 3%; text-align: center;">
+                      <%= link_to edit_funcionario_path(funcionario), class:"btn btn-success btn-circle" do %>
+                        <i class="fa fa-edit"></i>
+                      <% end %>
+                    </td>
+                    <td style="width: 3%; text-align: center;">
+                      <%= link_to funcionario, method: :delete, data: { confirm: t('messages.confirma_remocao') }, class:"btn btn-danger btn-circle" do %>
+                        <i class="fa fa-times"></i>
+                      <% end %>
+                    </td>
+                  </tr>                
               <% end %>
             </tbody>
         </table>
