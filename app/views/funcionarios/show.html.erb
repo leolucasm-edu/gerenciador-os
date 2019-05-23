@@ -1,0 +1,62 @@
+<br/>
+<div class="row">
+  <div class="col-lg-6">
+    <%= link_to t('buttons.voltar'), funcionarios_path, :class=>"btn btn-sm btn-default" %>
+    <%= link_to t('buttons.editar'), edit_funcionario_path(@funcionario.id), :class=>"btn btn-sm btn-primary" %>
+  </div>
+</div>
+<br/>
+
+<div class="row">
+  <div class="col-lg-6">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+      <%= @operacao %>
+      </div>
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-lg-12">
+            <%= form_with(model: @funcionario, local: true) do |form| %>
+              <div class="form-group">
+                <%= form.label :nome %>
+                <%= form.text_field :nome, id: :funcionario_nome, :class=>"form-control show", :readonly=>"true"  %>
+              </div>
+
+              <div class="form-group">
+                <%= form.label 'CPF'.upcase %>
+                <%= form.text_field :cnpj, id: :funcionario_cnpj,:class=>"form-control cpf show", :readonly=>"true"  %>
+              </div>
+
+              <div class="form-group">
+                <%= form.label :data_nascimento %>
+                <%= form.text_field :data_nascimento, id: :funcionario_data_nascimento, :class=>"form-control date show", :placeholder=>"Data", :readonly=>"true" %>
+              </div>
+
+              <%= fields_for @user do |u| %>
+                <div class="form-group">
+                  <%= u.label :email %>
+                  <%= u.text_field :email, id: :funcionario_email, :class=>"form-control show", :readonly=>"true"   %>
+                </div>
+                <div class="form-group">
+                  <%= u.label :password %>
+                  <%= u.password_field :password, id: :funcionario_password, :class=>"form-control show", :readonly=>"true"   %>
+                </div>
+                <div class="form-group">
+                  <%= u.label :password_confirmation %>
+                  <%= u.password_field :password_confirmation, id: :funcionario_password_confirmation, :class=>"form-control show", :readonly=>"true"   %>
+                </div>
+              <% end %>
+
+              <div class="actions">
+                <button type="submit" class="btn btn-sm btn-primary"><%= t('buttons.gravar') %></button>
+              </div>
+            <% end %>
+          </div>
+        </div>
+        <!-- /.row (nested) -->
+      </div>
+      <!-- /.panel-body -->
+    </div>
+    <!-- /.panel -->
+  </div>
+</div>
