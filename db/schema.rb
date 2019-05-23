@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190523160300) do
+ActiveRecord::Schema.define(version: 20190523213351) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,6 +57,20 @@ ActiveRecord::Schema.define(version: 20190523160300) do
     t.string "telefone"
   end
 
+  create_table "ordem_servicos", force: :cascade do |t|
+    t.bigint "cliente_id"
+    t.text "problema"
+    t.string "equipamento"
+    t.bigint "funcionario_id"
+    t.string "data_abertura"
+    t.string "data_encerramento"
+    t.string "data_previsao"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cliente_id"], name: "index_ordem_servicos_on_cliente_id"
+    t.index ["funcionario_id"], name: "index_ordem_servicos_on_funcionario_id"
+  end
+
   create_table "produtos", force: :cascade do |t|
     t.text "descricao"
     t.decimal "preco_compra"
@@ -94,5 +108,7 @@ ActiveRecord::Schema.define(version: 20190523160300) do
 
   add_foreign_key "emails", "clientes"
   add_foreign_key "enderecos", "clientes"
+  add_foreign_key "ordem_servicos", "clientes"
+  add_foreign_key "ordem_servicos", "funcionarios"
   add_foreign_key "telefones", "clientes"
 end

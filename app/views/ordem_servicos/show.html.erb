@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Cliente:</strong>
+  <%= @ordem_servico.cliente %>
+</p>
+
+<p>
+  <strong>Problema:</strong>
+  <%= @ordem_servico.problema %>
+</p>
+
+<p>
+  <strong>Equipamento:</strong>
+  <%= @ordem_servico.equipamento %>
+</p>
+
+<p>
+  <strong>Funcionario:</strong>
+  <%= @ordem_servico.funcionario %>
+</p>
+
+<p>
+  <strong>Data abertura:</strong>
+  <%= @ordem_servico.data_abertura %>
+</p>
+
+<p>
+  <strong>Data encerramento:</strong>
+  <%= @ordem_servico.data_encerramento %>
+</p>
+
+<p>
+  <strong>Data previsao:</strong>
+  <%= @ordem_servico.data_previsao %>
+</p>
+
+<%= link_to 'Edit', edit_ordem_servico_path(@ordem_servico) %> |
+<%= link_to 'Back', ordem_servicos_path %>

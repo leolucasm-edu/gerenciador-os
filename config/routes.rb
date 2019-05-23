@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :ordem_servicos
   resources :funcionarios
   resources :emails
   resources :enderecos

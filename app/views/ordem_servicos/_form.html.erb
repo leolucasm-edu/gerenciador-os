@@ -1,0 +1,52 @@
+<%= form_with(model: ordem_servico, local: true) do |form| %>
+  <% if ordem_servico.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(ordem_servico.errors.count, "error") %> prohibited this ordem_servico from being saved:</h2>
+
+      <ul>
+      <% ordem_servico.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :cliente_id %>
+    <%= form.text_field :cliente_id, id: :ordem_servico_cliente_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :problema %>
+    <%= form.text_area :problema, id: :ordem_servico_problema %>
+  </div>
+
+  <div class="field">
+    <%= form.label :equipamento %>
+    <%= form.text_field :equipamento, id: :ordem_servico_equipamento %>
+  </div>
+
+  <div class="field">
+    <%= form.label :funcionario_id %>
+    <%= form.text_field :funcionario_id, id: :ordem_servico_funcionario_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :data_abertura %>
+    <%= form.text_field :data_abertura, id: :ordem_servico_data_abertura %>
+  </div>
+
+  <div class="field">
+    <%= form.label :data_encerramento %>
+    <%= form.text_field :data_encerramento, id: :ordem_servico_data_encerramento %>
+  </div>
+
+  <div class="field">
+    <%= form.label :data_previsao %>
+    <%= form.text_field :data_previsao, id: :ordem_servico_data_previsao %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

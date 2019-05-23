@@ -37,9 +37,11 @@ body {
   border-color: black;
   font-size: 14px;
 }
-/*.btn-primary:hover {
-  background-color: #66afe9;
-}*/
+
+.btn-primary:hover {
+  background-color: white;
+  color: black;
+}
 
 .form-login {
     /*background-color: rgba(0,0,0,0.85);*/
