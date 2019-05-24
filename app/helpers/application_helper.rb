@@ -39,7 +39,7 @@ module ApplicationHelper
   end
 
   def datef(date)
-    return "" if date = ""
+    #return "" if date = ""
     date.strftime("%d/%m/%Y") if date
   end
 

@@ -17,7 +17,6 @@
               <th>Funcionário</th>
               <th>Data de Abertura</th>
               <th>Previsão</th>
-              <th>Valor</th>
               <th>Status</th>
               <th colspan="3"></th>
             </tr>
@@ -31,8 +30,17 @@
                 <td><%= ordem_servico.funcionario.nome %></td>
                 <td><%= datef(ordem_servico.created_at) %></td>
                 <td><%= ordem_servico.data_previsao %></td>
-                <td><%= ordem_servico.get_valor_ordem_servico %></td>
-                <td></td>
+                <td>
+                  <% if ordem_servico.get_status == 'Encerrada' %>
+                    <span class="label label-success">
+                      <%= ordem_servico.get_status %>
+                    </span>
+                  <% else %>
+                    <span class="label label-warning">
+                      <%= ordem_servico.get_status %>
+                    </span>
+                  <% end %>
+                </td>
                 <td style="width: 3%; text-align: center;">
                   <%= link_to ordem_servico, class:"btn btn-primary btn-circle" do %>
                     <i class="fa fa-eye"></i>

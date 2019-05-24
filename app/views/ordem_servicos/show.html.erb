@@ -4,46 +4,319 @@
     <%= link_to t('buttons.voltar'), ordem_servicos_path, :class=>"btn btn-sm btn-default" %>
     <% if @ordem_servico.aberta? %>
       <%= link_to t('buttons.editar'), edit_ordem_servico_path(@ordem_servico.id), :class=>"btn btn-sm btn-primary" %>
-      <%= link_to t('buttons.encerrar'), ordem_servico_encerrar_path(@ordem_servico.id), :class=>"btn btn-sm btn-primary" %>
+      <%= link_to t('buttons.encerrar'), put_ordem_servico_encerrar_path(@ordem_servico.id), :class=>"btn btn-sm btn-success" %>
     <% else %>
-      <%= link_to t('buttons.reabrir'), ordem_servico_reabrir_path(@ordem_servico.id), :class=>"btn btn-sm btn-primary" %>
+      <%= link_to t('buttons.reabrir'), put_ordem_servico_reabrir_path(@ordem_servico.id), :class=>"btn btn-sm btn-warning" %>
     <% end %>
 
   </div>
 </div>
 <br/>
 
-<p>
-  <strong>Cliente:</strong>
-  <%= @ordem_servico.cliente %>
-</p>
+<%= form_with(model: @ordem_servico, local: true) do |form| %>
 
-<p>
-  <strong>Problema:</strong>
-  <%= @ordem_servico.problema %>
-</p>
+  <div class="row">
+    <div class="col-md-12 col-lg-12">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+        Visualização - Info. Principais
+        </div>
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-lg-8">
+              <div class="form-group">
+                <%= form.label :cliente, :class=>"control-label" %>
+                <input id="cliente_nome" class="form-control show" readonly="readonly" type="text" value="<%= @ordem_servico.cliente.nome %>" name="cliente[nome]">
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="form-group">
+                <%= form.label :data_previsao %>
+                <%= form.text_field :data_previsao, id: :ordem_servico_data_previsao, value: @ordem_servico.data_previsao, :class=>"form-control show", :readonly=>"true"%>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12 col-lg-12">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+        Info. Adicionais
+        </div>
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="form-group">
+                <%= form.label :equipamento %>
+                <%= form.text_field :equipamento, id: :ordem_servico_equipamento, :class=>"form-control show", :readonly=>"true"  %>
+              </div>
+              <div class="form-group">
+                <%= form.label :problema %>
+                <%= form.text_area :problema, id: :ordem_servico_problema, :class=>"form-control problema_os show", :readonly=>"true"  %>
+              </div>
+            </div>
+          </div>
+          </div>
+          <!-- /.row (nested) -->
+        <!-- /.panel-body -->
+      </div>
+      <!-- /.panel -->
+    </div>
 
-<p>
-  <strong>Equipamento:</strong>
-  <%= @ordem_servico.equipamento %>
-</p>
+  </div>
 
-<p>
-  <strong>Funcionario:</strong>
-  <%= @ordem_servico.funcionario %>
-</p>
+  <div class="row">
+    <div class="col-md-12 col-lg-12">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+        Produtos
+        </div>
 
-<p>
-  <strong>Data abertura:</strong>
-  <%= @ordem_servico.data_abertura %>
-</p>
+        <div class="panel-body">
+          <div class="row">
+            <div id="produto_items" class="col-lg-12">
+              <%= form.fields_for :produto_items do |t| %>
+                <div class="row">
+                  <div class="col-md-6">
+                    <%= t.label :produto_id %>
+                  </div>
+                  <div class="col-md-2">
+                    <%= t.label :quantidade %>
+                  </div>
+                  <div class="col-md-2">
+                    <%= t.label :preco_unitario %>
+                  </div>
+                  <div class="col-md-2">
+                    <%= t.label :valor_total %>
+                  </div>
 
-<p>
-  <strong>Data encerramento:</strong>
-  <%= @ordem_servico.data_encerramento %>
-</p>
+                  <div class="col-md-6">
+                    <%= t.text_field :produto_id, :class=>"form-control produto_id", :readonly=>"true" %>
+                  </div>
+                  <div class="col-md-2">
+                    <%= t.text_field :quantidade, :class=>"form-control quantidade currency show", :readonly=>"true" %>
+                  </div>
+                  <div class="col-md-2">
+                    <%= t.text_field :preco_unitario, :class=>"form-control preco_unitario currency show", :readonly=>"true" %>
+                  </div>
+                  <div class="col-md-2">
+                    <%= t.text_field :valor_total, :class=>"form-control valor_total_produto currency show", :readonly=>'readonly' %>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-<p>
-  <strong>Data previsao:</strong>
-  <%= @ordem_servico.data_previsao %>
-</p>
+  <div class="row">
+    <div class="col-md-12 col-lg-12">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+        Servicos
+        </div>
+
+        <div class="panel-body">
+          <div class="row">
+            <div id="servico_items" class="col-lg-12">
+              <%= form.fields_for :servico_items do |t| %>
+                <div class="row">
+                  <div class="col-md-6">
+                    <%= t.label :servico_id %>
+                  </div>
+                  <div class="col-md-2">
+                    <%= t.label :quantidade_horas %>
+                  </div>
+                  <div class="col-md-2">
+                    <%= t.label :preco_hora %>
+                  </div>
+                  <div class="col-md-2">
+                    <%= t.label :valor_total %>
+                  </div>
+
+                  <div class="col-md-6">
+                    <%= t.text_field :servico_id, :class=>"form-control servico_id", :readonly=>"true" %>
+                  </div>
+                  <div class="col-md-2">
+                    <%= t.text_field :quantidade_horas, :class=>"form-control quantidade_horas currency show", :readonly=>"true" %>
+                  </div>
+                  <div class="col-md-2">
+                    <%= t.text_field :preco_hora, :class=>"form-control preco_hora currency show", :readonly=>"true" %>
+                  </div>
+                  <div class="col-md-2">
+                    <%= t.text_field :valor_total, :class=>"form-control valor_total_produto currency show", :readonly=>'readonly' %>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row" style="float: right;">
+    <div class="col-lg-12">
+      <div class="form-group">
+        <%= form.label :valor_total, :class=>"control-label" %>
+        <%= form.text_field :valor_total, id: :ordem_servico_valor_total, :class=>"form-control currency show", :readonly=>'readonly'%>
+      </div>
+
+    </div>
+  </div>
+
+  <br>
+  <br>
+  <br>
+  <br><br>
+
+<script>
+  // BUSCAS VIA AJAX
+
+  function carrega_preco(tipo, nome, id){
+    var qtd_caracteres = nome.lastIndexOf('][') - nome.lastIndexOf('s][') - 3;
+    var indice = nome.substr(40,qtd_caracteres);
+    var campo_preco = '#ordem_servico_'.concat(tipo).concat('_items_attributes_').concat(indice)
+    if (tipo == 'produto'){
+        campo_preco = campo_preco.concat('_preco_unitario');
+        $.ajax({
+          type: "GET",
+          url: "/search/search_by_id",
+          data: { id: $('#'.concat(id)).val(), model: "Produto" },
+          success: function(data){
+            $(campo_preco).val(data.preco_venda);
+          },
+          dataType: "json"
+        });
+    } else {
+        campo_preco = campo_preco.concat('_preco_hora');
+        $.ajax({
+          type: "GET",
+          url: "/search/search_by_id",
+          data: { id: $('#'.concat(id)).val(), model: "Servico" },
+          success: function(data){
+            $(campo_preco).val(data.preco_hora);
+          },
+          dataType: "json"
+        });
+    }
+  }
+
+  function recalcula_total_produto(nome) {
+    var qtd_caracteres = nome.lastIndexOf('][') - nome.lastIndexOf('s][') - 3;
+    var indice = nome.substr(40,qtd_caracteres);
+    var campo_qtd = '#ordem_servico_produto_items_attributes_'.concat(indice).concat('_quantidade');
+    var campo_preco = '#ordem_servico_produto_items_attributes_'.concat(indice).concat('_preco_unitario');
+    var valor_total = '#ordem_servico_produto_items_attributes_'.concat(indice).concat('_valor_total');
+    var qtd = $(campo_qtd).val().replace('.', '').replace(',', '.')
+    var preco = $(campo_preco).val().replace('.', '').replace(',', '.')
+    $(valor_total).val(qtd*preco);
+    recalcula_total();
+  }
+
+  function recalcula_total_servico(nome) {
+    var qtd_caracteres = nome.lastIndexOf('][') - nome.lastIndexOf('s][') - 3;
+    var indice = nome.substr(40,qtd_caracteres);
+    var campo_qtd = '#ordem_servico_servico_items_attributes_'.concat(indice).concat('_quantidade_horas');
+    var campo_preco = '#ordem_servico_servico_items_attributes_'.concat(indice).concat('_preco_hora');
+    var valor_total = '#ordem_servico_servico_items_attributes_'.concat(indice).concat('_valor_total');
+    var qtd = $(campo_qtd).val().replace('.', '').replace(',', '.')
+    var preco = $(campo_preco).val().replace('.', '').replace(',', '.')
+    $(valor_total).val(qtd*preco);
+    recalcula_total();
+  }
+
+  function adiciona_mascaras(){
+    Mask(".currency");
+    $('#produto_items').off("change.quantidade");
+    $('#servico_items').off("change.quantidade");
+
+    $('#produto_items').on("change .quantidade", function(e) {
+      recalcula_total_produto(e.target.name);
+    });
+
+    $('#servico_items').on("change .quantidade_horas", function(e) {
+      recalcula_total_servico(e.target.name);
+    });
+
+    $('#produto_items').on("change .produto_id", function(e) {
+      carrega_preco('produto', e.target.name, e.target.id);
+    });
+
+    $('#servico_items').on("change .servico_id", function(e) {
+      carrega_preco('servico', e.target.name, e.target.id);
+    });
+  }
+
+  function recalcula_total() {
+    var valor;
+    var valor_servico;
+    var aux;
+
+    valor = 0;
+    valor_servico = 0;
+
+    $('.valor_total_produto').each(function(index, element) {
+      aux = parseFloat($(element).val().replace('.', '').replace(',', '.'));
+      if (!isNaN(aux)){
+        valor += aux;
+      }
+
+    });
+
+    $('.valor_total_servico').each(function(index, element) {
+      aux = parseFloat($(element).val().replace('.', '').replace(',', '.'));
+      if (!isNaN(aux)){
+        valor_servico += aux;
+      }
+    });
+
+    $('#ordem_servico_valor_total').val(valor + valor_servico);
+  }
+
+  $('#produto_items').on("change .quantidade", function(e) {
+    recalcula_total_produto(e.target.name);
+  });
+
+  $('#servico_items').on("change .quantidade_horas", function(e) {
+    recalcula_total_servico(e.target.name);
+  });
+
+  $('#produto_items').on("click .btn-remover", function(e) {
+    recalcula_total();
+  });
+
+  $('#servico_items').on("click .btn-remover", function(e) {
+    recalcula_total();
+  });
+
+  $("#produto_items").on("click", ".btn-adicionar", function(e) {
+    setTimeout(adiciona_mascaras, 300);
+  });
+
+  $("#servico_items").on("click", ".btn-adicionar", function(e) {
+    setTimeout(adiciona_mascaras, 300);
+  });
+
+  $('#produto_items').on("change .produto_id", function(e) {
+    carrega_preco('produto', e.target.name, e.target.id);
+  });
+
+  $('#servico_items').on("change .servico_id", function(e) {
+    carrega_preco('servico', e.target.name, e.target.id);
+  });
+
+  function prepara_campos() {
+    BuscaProduto( $('.produto_id'), {});
+    BuscaServico( $('.servico_id'), {});
+  }
+
+  prepara_campos();
+
+</script>
+<% end %>

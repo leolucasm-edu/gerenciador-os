@@ -28,7 +28,7 @@
               </div>
               <% if @cliente.cpf_cnpj.length == 14 %>
                 <div class="form-group">
-                  <%= form.label :data_nascimento %>                  
+                  <%= form.label :data_nascimento %>
                   <%= form.text_field :data_nascimento, id: :cliente_data_nascimento, value: datef(@cliente.data_nascimento), :class=>"form-control date show", :readonly=>"true" %>
                 </div>
               <% end %>

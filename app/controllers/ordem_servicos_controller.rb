@@ -1,5 +1,6 @@
 class OrdemServicosController < ApplicationController
   before_action :set_ordem_servico, only: [:show, :edit, :update, :destroy, :encerrar, :reabrir]
+  #after_action :atualiza_valor_total, only: [:create, :update]
   before_action :authenticate_user!
 
   # GET /ordem_servicos
@@ -33,8 +34,9 @@ class OrdemServicosController < ApplicationController
       return
     end
 
-    @ordem_servico.data_encerramento = Date.Today
+    @ordem_servico.data_encerramento = Date.today
     @ordem_servico.save
+    redirect_to @ordem_servico, notice: 'Ordem de serviço encerrada com  sucesso.' and return    
   end
 
   def reabrir
@@ -45,6 +47,7 @@ class OrdemServicosController < ApplicationController
 
     @ordem_servico.data_encerramento = ''
     @ordem_servico.save
+    redirect_to @ordem_servico, notice: 'Ordem de servico reaberta com sucesso.' and return
 
   end
 
@@ -93,6 +96,11 @@ class OrdemServicosController < ApplicationController
     end
   end
 
+  def atualiza_valor_total
+    @ordem_servico.valor_total = @ordem_servico.get_valor_ordem_servico
+    @ordem_servico.save!
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_ordem_servico
@@ -113,8 +121,9 @@ class OrdemServicosController < ApplicationController
         :funcionario_id,
         :data_encerramento,
         :data_previsao,
+        :valor_total,
         produto_items_attributes: [:id, :produto_id, :quantidade, :preco_unitario, :valor_total, :_destroy],
-        servico_items_attributes: [:id, :servico_id, :quantidade_horas, :preco_hora, :valor_total, :_destroy],
+        servico_items_attributes: [:id, :servico_id, :quantidade_horas, :preco_hora, :valor_total, :_destroy]
       )
     end
 end

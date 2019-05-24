@@ -73,6 +73,6 @@ class ServicoItemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def servico_item_params
-      params.require(:servico_item).permit(:servico_id, :ordem_servico_id, :quantidade_horas, :preco_hora)
+      params.require(:servico_item).permit(:servico_id, :ordem_servico_id, :quantidade_horas, :preco_hora, :valor_total)
     end
 end
