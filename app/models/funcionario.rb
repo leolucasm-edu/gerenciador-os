@@ -6,7 +6,7 @@ class Funcionario < ApplicationRecord
   validates_presence_of :cnpj
   validates_presence_of :data_nascimento
   validates_presence_of :telefone
-  validates :cnpj, :cpf => true
+  validates :cnpj, :cpf => true  
 
   def formata_cpf
     return self.cnpj if self.cnpj.nil?

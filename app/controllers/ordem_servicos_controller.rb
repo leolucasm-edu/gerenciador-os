@@ -36,7 +36,7 @@ class OrdemServicosController < ApplicationController
 
     @ordem_servico.data_encerramento = Date.today
     @ordem_servico.save
-    redirect_to @ordem_servico, notice: 'Ordem de serviço encerrada com  sucesso.' and return    
+    redirect_to @ordem_servico, notice: 'Ordem de serviço encerrada com  sucesso.' and return
   end
 
   def reabrir
@@ -60,7 +60,7 @@ class OrdemServicosController < ApplicationController
 
     respond_to do |format|
       if @ordem_servico.save
-        format.html { redirect_to @ordem_servico, notice: 'Ordem servico was successfully created.' }
+        format.html { redirect_to @ordem_servico, notice: t('messages.cadastro_salvo')}
         format.json { render :show, status: :created, location: @ordem_servico }
       else
         @ordem_servico.servico_items.build unless @ordem_servico.servico_items.size > 0
@@ -77,7 +77,7 @@ class OrdemServicosController < ApplicationController
     respond_to do |format|
       set_funcionario
       if @ordem_servico.update(ordem_servico_params)
-        format.html { redirect_to @ordem_servico, notice: 'Ordem servico was successfully updated.' }
+        format.html { redirect_to @ordem_servico, notice: t('messages.cadastro_atualizado') }
         format.json { render :show, status: :ok, location: @ordem_servico }
       else
         format.html { render :edit }
@@ -91,7 +91,7 @@ class OrdemServicosController < ApplicationController
   def destroy
     @ordem_servico.destroy
     respond_to do |format|
-      format.html { redirect_to ordem_servicos_url, notice: 'Ordem servico was successfully destroyed.' }
+      format.html { redirect_to ordem_servicos_url, notice: t('messages.cadastro_removido') }
       format.json { head :no_content }
     end
   end
