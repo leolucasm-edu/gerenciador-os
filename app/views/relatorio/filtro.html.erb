@@ -1,0 +1,47 @@
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">Relatório</h1>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<!-- /.row -->
+
+<div class="row">
+  <div class="col-lg-6">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+      Filtro
+      </div>
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-lg-12">
+            <%= form_tag(relatorio_gerar_path) do %>
+              <div class="form-group">
+                <%= label_tag(:data_inicial, "Data de Abertura Inicial", class: 'control-label') %>
+                <%= text_field_tag :data_inicial, datef(Date.today), :class=>"form-control date" %>
+              </div>
+              <div class="form-group">
+                <%= label_tag(:data_final, "Data de Abertura Final", class: 'control-label') %>
+                <%= text_field_tag :data_final, datef(Date.today), :class=>"form-control date" %>
+              </div>
+              <div class="form-group">
+                <%= label_tag(:data_final, "Status", class: 'control-label') %>
+                <%= select_tag(:status, options_for_select([
+                  ['Todas','todas'],
+                  ['Abertas','abertas'],
+                  ['Encerradas','encerradas']]), name: 'status', class: 'form-control') %>
+              </div>
+              <div class="actions">
+                <button type="submit" class="btn btn-sm btn-primary"><%= t('buttons.gravar') %></button>
+              </div>
+          </div>
+            <% end %>
+          </div>
+        </div>
+        <!-- /.row (nested) -->
+      </div>
+      <!-- /.panel-body -->
+    </div>
+    <!-- /.panel -->
+  </div>
+</div>

@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  get 'relatorio/filtro'
+
+  get 'relatorio/gerar'
+  post 'relatorio/gerar' => 'relatorio#gerar', :as => 'post_relatorio_gerar'  
+
   resources :servico_items
   resources :produto_items
   resources :ordem_servicos
@@ -25,5 +30,5 @@ Rails.application.routes.draw do
 
   get 'ordem_servicos/:id/reabrir' => 'ordem_servicos#reabrir', :as => 'ordem_servico_reabrir'
   put 'ordem_servicos/:id/reabrir' => 'ordem_servicos#reabrir', :as => 'put_ordem_servico_reabrir'
-  patch 'ordem_servicos/:id/reabrir' => 'ordem_servicos#reabrir'  
+  patch 'ordem_servicos/:id/reabrir' => 'ordem_servicos#reabrir'
 end
