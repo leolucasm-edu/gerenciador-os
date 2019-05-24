@@ -18,6 +18,8 @@ gem 'devise'
 gem 'devise-i18n'
 # A gem to automate using jQuery with Rails
 gem 'jquery-rails'
+# Select2
+gem 'select2-rails', '3.5.9.3'
 # jQuery Mask
 gem 'rails-assets-jquery-mask', source: 'https://rails-assets.org'
 # Rails gem of the Bootstrap based admin theme SB Admin 2.

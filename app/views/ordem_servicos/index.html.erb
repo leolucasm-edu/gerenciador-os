@@ -14,9 +14,9 @@
             <tr>
               <th>Cliente</th>
               <th>CPF/CNPJ</th>
-              <th>Usuario</th>
-              <th>Data abertura</th>
-              <th>Data previsao</th>
+              <th>Funcionário</th>
+              <th>Data de Abertura</th>
+              <th>Previsão</th>
               <th>Valor</th>
               <th>Status</th>
               <th colspan="3"></th>
@@ -29,9 +29,9 @@
                 <td><%= ordem_servico.cliente.nome %></td>
                 <td><%= ordem_servico.cliente.cpf_cnpj %></td>
                 <td><%= ordem_servico.funcionario.nome %></td>
-                <td><%= ordem_servico.data_abertura %></td>
+                <td><%= datef(ordem_servico.created_at) %></td>
                 <td><%= ordem_servico.data_previsao %></td>
-                <td></td>
+                <td><%= ordem_servico.get_valor_ordem_servico %></td>
                 <td></td>
                 <td style="width: 3%; text-align: center;">
                   <%= link_to ordem_servico, class:"btn btn-primary btn-circle" do %>

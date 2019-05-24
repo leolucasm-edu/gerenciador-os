@@ -1,0 +1,2 @@
+module ServicoItemsHelper
+end

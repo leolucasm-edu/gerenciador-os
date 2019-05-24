@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Servico:</strong>
+  <%= @servico_item.servico %>
+</p>
+
+<p>
+  <strong>Ordem servico:</strong>
+  <%= @servico_item.ordem_servico %>
+</p>
+
+<p>
+  <strong>Quantidade horas:</strong>
+  <%= @servico_item.quantidade_horas %>
+</p>
+
+<p>
+  <strong>Preco hora:</strong>
+  <%= @servico_item.preco_hora %>
+</p>
+
+<%= link_to 'Edit', edit_servico_item_path(@servico_item) %> |
+<%= link_to 'Back', servico_items_path %>

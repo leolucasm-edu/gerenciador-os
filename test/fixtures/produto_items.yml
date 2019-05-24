@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  produto: one
+  ordem_servico: one
+  quantidade: 9.99
+  preco_unitario: 9.99
+
+two:
+  produto: two
+  ordem_servico: two
+  quantidade: 9.99
+  preco_unitario: 9.99

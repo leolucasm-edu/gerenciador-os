@@ -1,0 +1,44 @@
+<div class="nested-fields">
+  <div class="form-group field">
+    <div class="row">
+      <div class="col-md-5">
+        <%= f.label :produto_id %>
+      </div>
+      <div class="col-md-2">
+        <%= f.label :quantidade %>
+      </div>
+      <div class="col-md-2">
+        <%= f.label :preco_unitario %>
+      </div>
+      <div class="col-md-2">
+        <%= f.label :valor_total %>
+      </div>
+
+      <div class="col-md-5">
+        <%= f.text_field :produto_id, :class=>"form-control produto_id" %>
+      </div>
+      <div class="col-md-2">
+        <%= f.text_field :quantidade, :class=>"form-control quantidade currency" %>
+      </div>
+      <div class="col-md-2">
+        <%= f.text_field :preco_unitario, :class=>"form-control preco_unitario currency" %>
+      </div>
+      <div class="col-md-2">
+        <%= f.text_field :valor_total, :class=>"form-control valor_total_produto currency show", :readonly=>'readonly' %>
+      </div>
+
+      <div class="col-md-1">
+        <%= link_to_remove_association('', f, class: "btn btn-sm btn-warning fa fa-times btn-remover")%>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // BUSCAS VIA AJAX
+  function prepara_campos() {
+    BuscaProduto( $('.produto_id'), {});
+  }
+
+  prepara_campos();
+</script>
