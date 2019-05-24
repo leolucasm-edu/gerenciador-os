@@ -11,7 +11,9 @@ class OrdemServico < ApplicationRecord
 
   validates :cliente_id, presence: true
   validates :data_previsao, presence: true
-  validates :valor_total, :numericality => { :greater_than => 0, message: "deve ser maior que R$0,00"}
+  validates :cliente_id, presence: true
+  validates :valor_total, :numericality => { :greater_than => 0, message: "deve ser maior que R$0,00"}  
+  validates_presence_of :servico_items
 
   def encerrada?
     self.data_encerramento.present?
