@@ -12,11 +12,10 @@
  *
  *= require font-awesome
  *= require bootstrap_sb_admin_base_v2
+ *= require select2
+ *= require select2-bootstrap
  *= require_self
  */
-
- @import "select2";
- @import "select2-bootstrap";
 
 .sidebar ul li, .navbar-top-links .dropdown-menu li{
   font-size: 12px !important;
