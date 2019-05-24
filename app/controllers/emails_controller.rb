@@ -1,5 +1,6 @@
 class EmailsController < ApplicationController
   before_action :set_email, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
   # GET /emails
   # GET /emails.json

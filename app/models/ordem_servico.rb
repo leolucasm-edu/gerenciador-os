@@ -7,8 +7,21 @@ class OrdemServico < ApplicationRecord
   accepts_nested_attributes_for :servico_items, reject_if: :all_blank, allow_destroy: true
   accepts_nested_attributes_for :produto_items, reject_if: :all_blank, allow_destroy: true
 
+  def encerrada?
+    self.data_encerramento.present?
+  end
+
+  def aberta?
+    !self.data_encerramento.present?
+  end
+
+  def get_status
+    return 'Encerrada' if self.encerrada?
+    return 'Aberta' if self.aberta?
+  end
+
   def get_valor_ordem_servico
-    valor = 0    
+    valor = 0
     return valor unless self.present?
 
     if self.produto_items.present?

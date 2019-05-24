@@ -1,5 +1,6 @@
 class ProdutoItemsController < ApplicationController
   before_action :set_produto_item, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
   # GET /produto_items
   # GET /produto_items.json
@@ -25,7 +26,7 @@ class ProdutoItemsController < ApplicationController
   # POST /produto_items.json
   def create
     @produto_item = ProdutoItem.new(produto_item_params)
-
+    @produto_item.recalcula_total
     respond_to do |format|
       if @produto_item.save
         format.html { redirect_to @produto_item, notice: 'Produto item was successfully created.' }
@@ -42,6 +43,8 @@ class ProdutoItemsController < ApplicationController
   def update
     respond_to do |format|
       if @produto_item.update(produto_item_params)
+        @produto_item.recalcula_total
+        @produto_item.save!
         format.html { redirect_to @produto_item, notice: 'Produto item was successfully updated.' }
         format.json { render :show, status: :ok, location: @produto_item }
       else

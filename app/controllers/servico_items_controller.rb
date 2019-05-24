@@ -1,5 +1,6 @@
 class ServicoItemsController < ApplicationController
   before_action :set_servico_item, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
   # GET /servico_items
   # GET /servico_items.json
@@ -25,6 +26,7 @@ class ServicoItemsController < ApplicationController
   # POST /servico_items.json
   def create
     @servico_item = ServicoItem.new(servico_item_params)
+    @servico_item.recalcula_total
 
     respond_to do |format|
       if @servico_item.save
@@ -42,6 +44,8 @@ class ServicoItemsController < ApplicationController
   def update
     respond_to do |format|
       if @servico_item.update(servico_item_params)
+        @servico_item.recalcula_total
+        @servico_item.save!
         format.html { redirect_to @servico_item, notice: 'Servico item was successfully updated.' }
         format.json { render :show, status: :ok, location: @servico_item }
       else

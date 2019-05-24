@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20190524030645) do
     t.date "data_nascimento"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "telefone"
   end
 
   create_table "emails", force: :cascade do |t|
@@ -67,7 +68,7 @@ ActiveRecord::Schema.define(version: 20190524030645) do
     t.string "data_previsao"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.decimal "valor_total"
+    t.decimal "valor_total", default: "0.0"
     t.index ["cliente_id"], name: "index_ordem_servicos_on_cliente_id"
     t.index ["funcionario_id"], name: "index_ordem_servicos_on_funcionario_id"
   end
@@ -79,7 +80,7 @@ ActiveRecord::Schema.define(version: 20190524030645) do
     t.decimal "preco_unitario"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.decimal "valor_total"
+    t.decimal "valor_total", default: "0.0"
     t.index ["ordem_servico_id"], name: "index_produto_items_on_ordem_servico_id"
     t.index ["produto_id"], name: "index_produto_items_on_produto_id"
   end
@@ -99,7 +100,7 @@ ActiveRecord::Schema.define(version: 20190524030645) do
     t.decimal "preco_hora"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.decimal "valor_total"
+    t.decimal "valor_total", default: "0.0"
     t.index ["ordem_servico_id"], name: "index_servico_items_on_ordem_servico_id"
     t.index ["servico_id"], name: "index_servico_items_on_servico_id"
   end

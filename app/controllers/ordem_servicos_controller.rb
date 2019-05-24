@@ -1,5 +1,6 @@
 class OrdemServicosController < ApplicationController
-  before_action :set_ordem_servico, only: [:show, :edit, :update, :destroy]
+  before_action :set_ordem_servico, only: [:show, :edit, :update, :destroy, :encerrar, :reabrir]
+  before_action :authenticate_user!
 
   # GET /ordem_servicos
   # GET /ordem_servicos.json
@@ -26,11 +27,33 @@ class OrdemServicosController < ApplicationController
     @operacao = 'Edição'
   end
 
+  def encerrar
+    if @ordem_servico.encerrada?
+      render :show, notice: 'A ordem de serviço já está encerrada'
+      return
+    end
+
+    @ordem_servico.data_encerramento = Date.Today
+    @ordem_servico.save
+  end
+
+  def reabrir
+    if @ordem_servico.aberta?
+      render :show, notice: 'A ordem de serviço já está aberta'
+      return
+    end
+
+    @ordem_servico.data_encerramento = ''
+    @ordem_servico.save
+
+  end
+
   # POST /ordem_servicos
   # POST /ordem_servicos.json
   def create
     @ordem_servico = OrdemServico.new(ordem_servico_params)
     set_funcionario
+    @ordem_servico.valor_total = @ordem_servico.get_valor_ordem_servico
 
     respond_to do |format|
       if @ordem_servico.save
