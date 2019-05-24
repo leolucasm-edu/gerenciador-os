@@ -2,8 +2,8 @@ class Cliente < ApplicationRecord
   has_many :telefones, dependent: :destroy
   has_many :emails, dependent: :destroy
   has_one :endereco, dependent: :destroy
-  before_create :formata_cpf_cnpj
-  before_update :formata_cpf_cnpj
+  before_create :formata_cpf_cnpj, :valida_data_nascimento
+  before_update :formata_cpf_cnpj, :valida_data_nascimento
 
   accepts_nested_attributes_for :telefones, reject_if: :all_blank, allow_destroy: true
   accepts_nested_attributes_for :emails, reject_if: :all_blank, allow_destroy: true
@@ -27,6 +27,14 @@ class Cliente < ApplicationRecord
     self.cpf_cnpj = case self.cpf_cnpj.length
     when 11 then self.cpf_cnpj.gsub(/^(.{3})(.{3})(.{3})(.{2})$/, '\1.\2.\3-\4')
     when 14 then self.cpf_cnpj.gsub(/^(.{2})(.{3})(.{3})(.{4})(.{2})$/, '\1.\2.\3/\4-\5')
+    end
+  end
+
+  def valida_data_nascimento
+    return self.data_nascimento if self.data_nascimento.nil?
+
+    if self.data_nascimento.to_date >= Date.today
+      self.errors[:data_nascimento] << "deve ser menor que data atual"
     end
   end
 

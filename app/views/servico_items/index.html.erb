@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Servico Items</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Servico</th>
+      <th>Ordem servico</th>
+      <th>Quantidade horas</th>
+      <th>Preco hora</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @servico_items.each do |servico_item| %>
+      <tr>
+        <td><%= servico_item.servico %></td>
+        <td><%= servico_item.ordem_servico %></td>
+        <td><%= servico_item.quantidade_horas %></td>
+        <td><%= servico_item.preco_hora %></td>
+        <td><%= link_to 'Show', servico_item %></td>
+        <td><%= link_to 'Edit', edit_servico_item_path(servico_item) %></td>
+        <td><%= link_to 'Destroy', servico_item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Servico Item', new_servico_item_path %>

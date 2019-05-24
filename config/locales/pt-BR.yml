@@ -4,6 +4,9 @@ pt-BR:
       servico:
         one: 'Serviço'
         other: 'Serviços'
+      ordem_servico:
+        one: 'Ordem de Serviço'
+        other: 'Ordens de Serviço'
       produto:
         one: 'Produto'
         other: 'Produtos'
@@ -16,6 +19,9 @@ pt-BR:
       email:
         one: 'E-mail'
         other: 'E-mails'
+      funcionario:
+        one: 'Funcionário'
+        other: 'Funcionários'
       telefone:
         one: 'Telefone'
         other: 'Telefones'
@@ -23,6 +29,20 @@ pt-BR:
       servico:
         descricao: 'Descrição'
         preco_hora: 'Preço/Hora'
+      ordem_servico:
+        problema: 'Problema'
+        equipamento: 'Equipamento'
+        funcionario_id: 'Responsável'
+        data_previsao: 'Previsão'
+      produto_item:
+        produto_id: 'Produto'
+        preco_unitario: 'Preço Unitário'
+        valor_total: 'Preço'
+      servico_item:
+        servico_id: 'Serviço'
+        preco_hora: 'Preço/Hora'
+        quantidade_horas: 'Horas'
+        valor_total: 'Preço'
       produto:
         descricao: 'Descrição'
         preco_compra: 'Preço de Compra'
@@ -32,6 +52,12 @@ pt-BR:
         cpf_cnpj: 'CPF/CNPJ'
         email: 'E-mail'
         data_nascimento: 'Nascimento'
+      funcionario:
+        nome: Nome
+        cnpj: CPF
+        data_nascimento: Data de Nascimento
+        email: E-mail
+        telefone: Telefone
       endereco:
         rua: Rua
         numero: Número

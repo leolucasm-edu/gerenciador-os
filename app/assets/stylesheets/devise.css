@@ -1,7 +1,8 @@
 html, body { margin:0; height: 100%;}
 
 body {
-  background-image:url('https://vanzolini.org.br/wp-content/uploads/2016/05/recuperacao-judicial-768x538.jpg');
+  /*https://www.emotioncard.com.br/fundo-preto-plano-de-fundo/*/
+  background-image:url('https://i2.wp.com/www.emotioncard.com.br/wp-content/uploads/2019/04/plano-de-fundo-preto28.jpg?resize=696%2C435&ssl=1');'
   background-repeat: no-repeat;
   background-position:center center;
   overflow: hidden;
@@ -27,12 +28,24 @@ body {
     padding: 110px;
 }
 ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-    color: #ffffff!important;
+    color: white!important;
     opacity: 1; /* Firefox */
     font-size:14px!important;
 }
+.btn-primary {
+  background-color: black;
+  border-color: black;
+  font-size: 14px;
+}
+
+.btn-primary:hover {
+  background-color: white;
+  color: black;
+}
+
 .form-login {
-    background-color: rgba(0,0,0,0.85);
+    /*background-color: rgba(0,0,0,0.85);*/
+    /*background-color: rgba(255,255,255,0.85);*/
     padding-top: 10px;
     padding-bottom: 20px;
     padding-left: 20px;

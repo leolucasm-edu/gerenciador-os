@@ -19,3 +19,9 @@ pt-BR:
     cidade: Cidade
     estado: Estado
     cep: CEP
+  funcionario:
+    nome: Nome
+    cnpj: CPF
+    data_nascimento: Data de Nascimento
+    email: E-mail
+    telefone: Telefone

@@ -1,0 +1,49 @@
+<br/>
+<div class="row">
+  <div class="col-lg-6">
+    <%= link_to t('buttons.voltar'), ordem_servicos_path, :class=>"btn btn-sm btn-default" %>
+    <% if @ordem_servico.aberta? %>
+      <%= link_to t('buttons.editar'), edit_ordem_servico_path(@ordem_servico.id), :class=>"btn btn-sm btn-primary" %>
+      <%= link_to t('buttons.encerrar'), ordem_servico_encerrar_path(@ordem_servico.id), :class=>"btn btn-sm btn-primary" %>
+    <% else %>
+      <%= link_to t('buttons.reabrir'), ordem_servico_reabrir_path(@ordem_servico.id), :class=>"btn btn-sm btn-primary" %>
+    <% end %>
+
+  </div>
+</div>
+<br/>
+
+<p>
+  <strong>Cliente:</strong>
+  <%= @ordem_servico.cliente %>
+</p>
+
+<p>
+  <strong>Problema:</strong>
+  <%= @ordem_servico.problema %>
+</p>
+
+<p>
+  <strong>Equipamento:</strong>
+  <%= @ordem_servico.equipamento %>
+</p>
+
+<p>
+  <strong>Funcionario:</strong>
+  <%= @ordem_servico.funcionario %>
+</p>
+
+<p>
+  <strong>Data abertura:</strong>
+  <%= @ordem_servico.data_abertura %>
+</p>
+
+<p>
+  <strong>Data encerramento:</strong>
+  <%= @ordem_servico.data_encerramento %>
+</p>
+
+<p>
+  <strong>Data previsao:</strong>
+  <%= @ordem_servico.data_previsao %>
+</p>

@@ -1,0 +1,44 @@
+<div class="nested-fields">
+  <div class="form-group field">
+    <div class="row">
+      <div class="col-md-5">
+        <%= f.label :servico_id %>
+      </div>
+      <div class="col-md-2">
+        <%= f.label :quantidade_horas %>
+      </div>
+      <div class="col-md-2">
+        <%= f.label :preco_hora %>
+      </div>
+      <div class="col-md-2">
+        <%= f.label :valor_total %>
+      </div>
+
+      <div class="col-md-5">
+        <%= f.text_field :servico_id, :class=>"form-control servico_id" %>
+      </div>
+      <div class="col-md-2">
+        <%= f.text_field :quantidade_horas, :class=>"form-control quantidade_horas currency" %>
+      </div>
+      <div class="col-md-2">
+        <%= f.text_field :preco_hora, :class=>"form-control preco_hora currency" %>
+      </div>
+      <div class="col-md-2">
+        <%= f.text_field :valor_total, :class=>"form-control valor_total_servico currency show", :readonly=>'readonly' %>
+      </div>
+
+      <div class="col-md-1">
+        <%= link_to_remove_association('', f, class: "btn btn-sm btn-warning fa fa-times btn-remover")%>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // BUSCAS VIA AJAX
+  function prepara_campos() {
+    BuscaServico( $('.servico_id'), {});
+  }
+
+  prepara_campos();
+</script>

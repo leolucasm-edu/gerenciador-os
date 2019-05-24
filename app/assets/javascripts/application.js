@@ -24,4 +24,24 @@
 //= require datepicker/locales/bootstrap-datepicker.pt-BR
 //= require timepicker/bootstrap-timepicker
 //= require cocoon_callbacks
+//= require select2
+//= require select2_locale_pt-BR
 //= require_tree .
+
+function BuscaCliente(field, search_parameters, select2_options) {
+  select2_options = select2_options || {};
+  $.extend(search_parameters, { model: 'Cliente', campo: 'nome', texto: 'nome' });
+  BuscaAjax(field, search_parameters, select2_options);
+}
+
+function BuscaProduto(field, search_parameters, select2_options) {
+  select2_options = select2_options || {};
+  $.extend(search_parameters, { model: 'Produto', campo: 'descricao', texto: 'descricao' });
+  BuscaAjax(field, search_parameters, select2_options);
+}
+
+function BuscaServico(field, search_parameters, select2_options) {
+  select2_options = select2_options || {};
+  $.extend(search_parameters, { model: 'Servico', campo: 'descricao', texto: 'descricao' });
+  BuscaAjax(field, search_parameters, select2_options);
+}
